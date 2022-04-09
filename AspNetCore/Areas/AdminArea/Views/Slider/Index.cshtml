@@ -1,0 +1,67 @@
+﻿
+@model List<Slider>
+@{
+    ViewData["Title"] = "Index";
+    int count = 1;
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="header d-flex justify-content-between mt-3">
+            
+            <div>
+                <a class="btn btn-success" asp-action="Create">Create</a>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            Number
+                        </th>
+                        <th>
+                            Image
+                        </th>
+                        <th>
+                            Settings
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var slider in Model)
+                    {
+                        <tr>
+                            <td>
+                                @count
+                            </td>
+                            <td>
+                                <img src="~/assets/img/slider/@slider.Image" style="width:150px;height:130px" alt="slider" />
+                            </td>
+                            <td>
+                                <a class="btn btn-primary btn-sm" asp-action="Detail" asp-route-id="@slider.Id">
+                                   Detail
+                                </a>
+                                <a class="btn btn-warning btn-sm" asp-action="Update" asp-route-id="@slider.Id">
+                                   Update
+                                </a>
+                                <form style="display:inline-block" method="post" asp-action="Delete" asp-route-id="@slider.Id">
+                                    <button class="btn btn-danger btn-sm" type="submit">
+                                       Delete
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        count++;
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
