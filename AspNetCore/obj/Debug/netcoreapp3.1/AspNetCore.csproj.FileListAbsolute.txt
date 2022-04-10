@@ -158,3 +158,9 @@ C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3
 C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Service\Update.cshtml.g.cs
 C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\About\Update.cshtml.g.cs
 C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\Home\CourseDetail.cshtml.g.cs
+C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Notice\Index.cshtml.g.cs
+C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Notice\Create.cshtml.g.cs
+C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Notice\Update.cshtml.g.cs
+C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Notice\Detail.cshtml.g.cs
+C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Event\Index.cshtml.g.cs
+C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Event\Create.cshtml.g.cs

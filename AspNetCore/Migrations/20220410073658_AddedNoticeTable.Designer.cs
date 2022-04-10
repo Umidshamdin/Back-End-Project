@@ -4,14 +4,16 @@ using AspNetCore.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AspNetCore.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220410073658_AddedNoticeTable")]
+    partial class AddedNoticeTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -72,63 +74,6 @@ namespace AspNetCore.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("CourseFeatures");
-                });
-
-            modelBuilder.Entity("AspNetCore.Models.Event", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DayTime")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("EventDetailId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("EventsId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Header")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Image")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("Time")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EventsId");
-
-                    b.ToTable("Events");
-                });
-
-            modelBuilder.Entity("AspNetCore.Models.EventDetail", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DetailImage")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("EventDetails");
                 });
 
             modelBuilder.Entity("AspNetCore.Models.Notice", b =>
@@ -199,13 +144,6 @@ namespace AspNetCore.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("SliderDetails");
-                });
-
-            modelBuilder.Entity("AspNetCore.Models.Event", b =>
-                {
-                    b.HasOne("AspNetCore.Models.Event", "Events")
-                        .WithMany()
-                        .HasForeignKey("EventsId");
                 });
 #pragma warning restore 612, 618
         }

@@ -25,12 +25,20 @@ namespace AspNetCore.Controllers
             List<Service> services = await _context.Services.ToListAsync();
             About about = await _context.Abouts.FirstOrDefaultAsync();
             List<CourseFeatures> courseFeatures = await _context.CourseFeatures.ToListAsync();
+            List<Event> events = await _context.Events.ToListAsync();
+            List<EventDetail> eventDetails = await _context.EventDetails.ToListAsync();
+
+
+            List<Notice> notices = await _context.Notices.ToListAsync();
             HomeVM homeVM = new HomeVM
             {
                 Sliders=sliders,
                 SliderDetail=sliderDetail,
                 Services=services,
-                About=about
+                About=about,
+                Notices=notices,
+                Events=events,
+                EventDetails=eventDetails
                 
             };
            

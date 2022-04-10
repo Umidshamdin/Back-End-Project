@@ -179,30 +179,15 @@
                 <div class="notice-left-wrapper">
                     <h3>notice board</h3>
                     <div class="notice-left">
-                        <div class="single-notice-left mb-23 pb-20">
-                            <h4>5, June 2017</h4>
-                            <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                        </div>
-                        <div class="single-notice-left hidden-sm mb-23 pb-20">
-                            <h4>4, June 2017</h4>
-                            <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                        </div>
-                        <div class="single-notice-left pb-70">
-                            <h4>3, June 2017</h4>
-                            <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                        </div>
-                        <div class="single-notice-left mb-23 pb-20">
-                            <h4>5, June 2017</h4>
-                            <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                        </div>
-                        <div class="single-notice-left hidden-sm mb-23 pb-20">
-                            <h4>4, June 2017</h4>
-                            <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                        </div>
-                        <div class="single-notice-left pb-70">
-                            <h4>3, June 2017</h4>
-                            <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                        </div>
+                        @foreach (var item in Model.Notices)
+                        {
+                            <div class="single-notice-left mb-23 pb-20">
+                                <h4>@item.Time</h4>
+                                <p>@item.Description </p>
+                            </div>
+                        }
+
+
                     </div>
                 </div>
             </div>
@@ -222,74 +207,30 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6 col-sm-12 col-xs-12">
-                <div class="single-event mb-35">
-                    <div class="event-img">
-                        <a href="event-details.html"><img src="~/assets/img/event/event1.jpg" alt="event"></a>
-                    </div>
-                    <div class="event-content text-left">
-                        <h3>20 June 2017</h3>
-                        <h4><a href="event-details.html">ADVANCE PHP WORKSHOP</a></h4>
-                        <ul>
-                            <li><i class="fa fa-clock-o"></i>9.00 AM - 4.45 PM</li>
-                            <li><i class="fa fa-map-marker"></i>New Yourk City</li>
-                        </ul>
-                        <div class="event-content-right">
-                            <a class="default-btn" href="event-details.html">join now</a>
+            @foreach (var item in Model.Events)
+            {
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    <div class="single-event mb-35">
+                        <div class="event-img">
+                            <a href="event-details.html"><img src="~/assets/img/event/@item.Image" alt="event"></a>
+                        </div>
+                        <div class="event-content text-left">
+                            <h3>@item.Time</h3>
+                            <h4><a href="event-details.html">@item.Header</a></h4>
+                            <ul>
+                                <li><i class="fa fa-clock-o"></i>@item.DayTime</li>
+                                <li><i class="fa fa-map-marker"></i>@item.Address</li>
+                            </ul>
+                            <div class="event-content-right">
+                                <a class="default-btn" href="event-details.html">join now</a>
+                            </div>
                         </div>
                     </div>
+                   
                 </div>
-                <div class="single-event hidden-sm hidden-xs">
-                    <div class="event-img">
-                        <a href="event-details.html"><img src="~/assets/img/event/event3.jpg" alt="event"></a>
-                    </div>
-                    <div class="event-content text-left">
-                        <h3>16 June 2017</h3>
-                        <h4><a href="event-details.html">learning english history</a></h4>
-                        <ul>
-                            <li><i class="fa fa-clock-o"></i>9.00 AM - 4.45 PM</li>
-                            <li><i class="fa fa-map-marker"></i>New Yourk City</li>
-                        </ul>
-                        <div class="event-content-right">
-                            <a class="default-btn" href="event-details.html">join now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-sm-12 col-xs-12">
-                <div class="single-event mb-35">
-                    <div class="event-img">
-                        <a href="event-details.html"><img src="~/assets/img/event/event2.jpg" alt="event"></a>
-                    </div>
-                    <div class="event-content text-left">
-                        <h3>18 June 2017</h3>
-                        <h4><a href="event-details.html">DIGITAL MARKETING ANALYSIS</a></h4>
-                        <ul>
-                            <li><i class="fa fa-clock-o"></i>9.00 AM - 4.45 PM</li>
-                            <li><i class="fa fa-map-marker"></i>New Yourk City</li>
-                        </ul>
-                        <div class="event-content-right">
-                            <a class="default-btn" href="event-details.html">join now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-event hidden-sm hidden-xs">
-                    <div class="event-img">
-                        <a href="event-details.html"><img src="~/assets/img/event/event3.jpg" alt="event"></a>
-                    </div>
-                    <div class="event-content text-left">
-                        <h3>14 June 2017</h3>
-                        <h4><a href="event-details.html">UI & UX DESIGNER MEETUP</a></h4>
-                        <ul>
-                            <li><i class="fa fa-clock-o"></i>9.00 AM - 4.45 PM</li>
-                            <li><i class="fa fa-map-marker"></i>New Yourk City</li>
-                        </ul>
-                        <div class="event-content-right">
-                            <a class="default-btn" href="event-details.html">join now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            }
+
+
         </div>
     </div>
 </div>
