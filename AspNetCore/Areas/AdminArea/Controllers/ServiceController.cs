@@ -83,16 +83,19 @@ namespace AspNetCore.Areas.AdminArea.Controllers
                 return View();
             }
 
-
             _context.Update(service);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
 
         }
-       
+        public async Task<IActionResult> Delete(int id)
+        {
+            Service service = await _context.Services.Where(m => m.Id == id).FirstOrDefaultAsync();
+            if (service == null) return NotFound();
 
-
-
-
+            _context.Services.Remove(service);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

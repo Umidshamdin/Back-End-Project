@@ -19,6 +19,12 @@ namespace AspNetCore.Data
 
         public DbSet<Service> Services { get; set; }
 
+        public DbSet<About> Abouts { get; set; }
+
+        public DbSet<CourseFeatures> CourseFeatures { get; set; }
+
+
+
 
 
 

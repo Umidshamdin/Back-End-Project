@@ -23,13 +23,22 @@ namespace AspNetCore.Controllers
             List<Slider> sliders = await _context.Sliders.ToListAsync();
             SliderDetail sliderDetail = await _context.SliderDetails.FirstOrDefaultAsync();
             List<Service> services = await _context.Services.ToListAsync();
+            About about = await _context.Abouts.FirstOrDefaultAsync();
+            List<CourseFeatures> courseFeatures = await _context.CourseFeatures.ToListAsync();
             HomeVM homeVM = new HomeVM
             {
                 Sliders=sliders,
                 SliderDetail=sliderDetail,
-                Services=services
+                Services=services,
+                About=about
+                
             };
+           
+
             return View(homeVM);
         }
+
+
+        
     }
 }

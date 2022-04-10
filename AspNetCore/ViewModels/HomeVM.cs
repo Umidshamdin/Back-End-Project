@@ -13,6 +13,11 @@ namespace AspNetCore.ViewModels
 
         public List<Service> Services { get; set; }
 
+        public About About { get; set; }
+        
+
+
+
 
 
     }
