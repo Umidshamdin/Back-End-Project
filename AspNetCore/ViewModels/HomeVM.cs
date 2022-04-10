@@ -22,6 +22,8 @@ namespace AspNetCore.ViewModels
 
         public List<EventDetail> EventDetails { get; set; }
 
+        public List<Testimonial> Testimonials { get; set; }
+
 
 
 

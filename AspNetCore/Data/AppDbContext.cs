@@ -29,6 +29,10 @@ namespace AspNetCore.Data
 
         public DbSet<EventDetail> EventDetails { get; set; }
 
+        public DbSet<Testimonial> Testimonials { get; set; }
+
+
+
 
 
 

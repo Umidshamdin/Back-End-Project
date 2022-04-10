@@ -28,6 +28,8 @@ namespace AspNetCore.Controllers
             List<Event> events = await _context.Events.ToListAsync();
             List<EventDetail> eventDetails = await _context.EventDetails.ToListAsync();
 
+            List<Testimonial> testimonials = await _context.Testimonials.ToListAsync();
+
 
             List<Notice> notices = await _context.Notices.ToListAsync();
             HomeVM homeVM = new HomeVM
@@ -38,7 +40,8 @@ namespace AspNetCore.Controllers
                 About=about,
                 Notices=notices,
                 Events=events,
-                EventDetails=eventDetails
+                EventDetails=eventDetails,
+                Testimonials=testimonials
                 
             };
            
