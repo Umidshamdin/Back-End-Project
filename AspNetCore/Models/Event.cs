@@ -23,6 +23,10 @@ namespace AspNetCore.Models
 
         public int EventDetailId { get; set; }
 
-        public Event Events { get; set; }
+        public EventDetail EventDetail
+        {
+            get; set;
+
+        }
     }
 }

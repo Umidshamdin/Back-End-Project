@@ -211,18 +211,22 @@
             {
                 <div class="col-md-6 col-sm-12 col-xs-12">
                     <div class="single-event mb-35">
-                        <div class="event-img">
-                            <a href="event-details.html"><img src="~/assets/img/event/@item.Image" alt="event"></a>
-                        </div>
-                        <div class="event-content text-left">
-                            <h3>@item.Time</h3>
-                            <h4><a href="event-details.html">@item.Header</a></h4>
-                            <ul>
-                                <li><i class="fa fa-clock-o"></i>@item.DayTime</li>
-                                <li><i class="fa fa-map-marker"></i>@item.Address</li>
-                            </ul>
-                            <div class="event-content-right">
-                                <a class="default-btn" href="event-details.html">join now</a>
+                       
+                           
+                        <div class="single-event hidden-sm hidden-xs">
+                            <div class="event-img">
+                                <a href="event-details.html"><img style="width:260px;height:180px" src="~/assets/img/event/@item.Image" alt="event"></a>
+                            </div>
+                            <div class="event-content text-left">
+                                <h3>@item.Time</h3>
+                                <h4><a href="event-details.html">@item.Header</a></h4>
+                                <ul>
+                                    <li><i class="fa fa-clock-o"></i>@item.DayTime</li>
+                                    <li><i class="fa fa-map-marker"></i>@item.Address</li>
+                                </ul>
+                                <div class="event-content-right">
+                                    <a class="default-btn" href="event-details.html">join now</a>
+                                </div>
                             </div>
                         </div>
                     </div>
