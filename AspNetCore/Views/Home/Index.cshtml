@@ -288,7 +288,7 @@
                             </div>
                             <div class="blog-bottom">
                                 <h2><a href="blog-details.html">@item.Description </a></h2>
-                                <a href="blog-details.html">read more</a>
+                                <a asp-controller="Blog" asp-action="Detail" asp-route-Id="@item.Id">read more</a>
                             </div>
                         </div>
                     </div>

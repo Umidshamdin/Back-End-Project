@@ -174,3 +174,5 @@ C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3
 C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Blog\Create.cshtml.g.cs
 C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Blog\Detail.cshtml.g.cs
 C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Blog\Update.cshtml.g.cs
+C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\Blog\Index.cshtml.g.cs
+C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\Blog\Detail.cshtml.g.cs

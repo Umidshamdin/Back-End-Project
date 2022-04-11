@@ -30,7 +30,7 @@ namespace AspNetCore.Controllers
 
             List<Testimonial> testimonials = await _context.Testimonials.ToListAsync();
 
-            List<Blog> blogs = await _context.Blogs.ToListAsync();
+            List<Blog> blogs = await _context.Blogs.Take(4).Skip(1).ToListAsync();
 
 
             List<Notice> notices = await _context.Notices.ToListAsync();
