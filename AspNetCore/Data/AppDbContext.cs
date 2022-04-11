@@ -31,6 +31,9 @@ namespace AspNetCore.Data
 
         public DbSet<Testimonial> Testimonials { get; set; }
 
+        public DbSet<Blog> Blogs { get; set; }
+
+
 
 
 

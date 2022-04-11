@@ -1,0 +1,36 @@
+﻿@model Testimonial
+@{
+    ViewData["Title"] = "Create";
+
+}
+
+<div class="container mt-5">
+
+    <form class="forms-sample" method="post" asp-action="Create" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="Photo"></label>
+            <input class="form-control" style="width:300px" asp-for="Photo">
+            <span class="text-danger" asp-validation-for="Photo"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description"></label>
+            <input class="form-control" style="width:300px" asp-for="Description">
+            <span class="text-danger" asp-validation-for="Description"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input class="form-control" style="width:300px" asp-for="Name">
+            <span class="text-danger" asp-validation-for="Name"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Posinition"></label>
+            <input class="form-control" style="width:300px" asp-for="Posinition">
+            <span class="text-danger" asp-validation-for="Posinition"></span>
+        </div>
+        <button type="submit" class="btn btn-primary me-2">Submit</button>
+        <a asp-action="Index" class="btn btn-light">Cancel</a>
+    </form>
+
+
+</div>
+

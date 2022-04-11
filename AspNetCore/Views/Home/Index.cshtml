@@ -34,10 +34,6 @@
     </div>
 </section>
 <!-- Background Area End -->
-
-
-
-
 <!-- Service Start -->
 <div class="service-area two pt-150 pb-150">
     <div class="container">
@@ -56,12 +52,6 @@
     </div>
 </div>
 <!-- Service End -->
-
-
-
-
-
-
 <!-- About Start -->
 <div class="about-area pb-155">
     <div class="container">
@@ -70,7 +60,7 @@
                 <div class="about-content">
                     <h2>@Model.About.Header</h2>
                     <p>@Model.About.Description</p>
-                   
+
                     <a class="default-btn" href="about.html">view courses</a>
                 </div>
             </div>
@@ -83,9 +73,6 @@
     </div>
 </div>
 <!-- About End -->
-
-
-
 <!-- Courses Area Start -->
 <div class="courses-area two pt-150 pb-150 text-center">
     <div class="container">
@@ -111,7 +98,7 @@
                     <div class="course-content">
                         <h3><a href="course-details.html">CSE ENGINEERING</a></h3>
                         <p>I must explain to you how all this a mistaken idea of denouncing great explorer of the rut the is lder of human happiness</p>
-                        <a asp-controller="Home" asp-action="CourseDetail" class="default-btn" >read more</a>
+                        <a asp-controller="Home" asp-action="CourseDetail" class="default-btn">read more</a>
                     </div>
                 </div>
             </div>
@@ -155,10 +142,6 @@
     </div>
 </div>
 <!-- Courses Area End -->
-
-
-
-
 <!-- Notice Start -->
 <section class="notice-area two pt-140">
     <div class="container">
@@ -211,8 +194,8 @@
             {
                 <div class="col-md-6 col-sm-12 col-xs-12">
                     <div class="single-event mb-35">
-                       
-                           
+
+
                         <div class="single-event hidden-sm hidden-xs">
                             <div class="event-img">
                                 <a href="event-details.html"><img style="width:260px;height:200px" src="~/assets/img/event/@item.Image" alt="event"></a>
@@ -230,7 +213,7 @@
                             </div>
                         </div>
                     </div>
-                   
+
                 </div>
             }
 
@@ -240,28 +223,42 @@
 </div>
 <!-- Event Area End -->
 <!-- Testimonial Area Start -->
-<div class="testimonial-area pt-110 pb-105 text-center">
-    <div class="container">
-        <div class="row">
-            <div class="testimonial-owl owl-theme owl-carousel">
-                <div class="col-md-8 col-md-offset-2 col-sm-12">
-                    <div class="single-testimonial">
-                        <div class="testimonial-info">
-                            <div class="testimonial-img">
-                                <img src="~/assets/img/testimonial/testimonial.jpg" alt="testimonial">
-                            </div>
-                            <div class="testimonial-content">
-                                <p>I must explain to you how all this mistaken idea of denoung pleure and praising pain was born and I will give you a coete account of the system, and expound the actual</p>
-                                <h4>David Morgan</h4>
-                                <h5>Student, CSE</h5>
+
+
+    <div class="testimonial-area pt-110 pb-105 text-center">
+        <div class="container">
+            
+            <div class="row">
+                
+                
+                <div class="testimonial-owl owl-theme owl-carousel">
+                    @foreach (var item in Model.Testimonials)
+                    {
+                        <div class="col-md-8 col-md-offset-2 col-sm-12">
+                            <div class="single-testimonial">
+                                <div class="testimonial-info">
+                                    <div class="testimonial-img">
+                                        <img src="~/assets/img/testimonial/@item.Image" alt="testimonial">
+                                    </div>
+                                    <div class="testimonial-content">
+                                        <p>@item.Description</p>
+                                        <h4>@item.Name</h4>
+                                        <h5>@item.Posinition</h5>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    }
+
                 </div>
+                
+
             </div>
+            
+
         </div>
     </div>
-</div>
+
 <!-- Testimonial Area End -->
 <!-- Blog Area Start -->
 <div class="blog-area pt-150 pb-150">
@@ -275,63 +272,29 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="single-blog">
-                    <div class="blog-img">
-                        <a href="blog-details.html"><img src="~/assets/img/blog/blog1.jpg" alt="blog"></a>
-                        <div class="blog-hover">
-                            <a href="blog-details.html"><i class="fa fa-link"></i></a>
+            @foreach (var item in Model.Blogs)
+            {
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="single-blog">
+                        <div class="blog-img">
+                            <a href="blog-details.html"><img style="width:400px;height:300px" src="~/assets/img/blog/@item.Image" alt="blog"></a>
+                            <div class="blog-hover">
+                                <a href="blog-details.html"><i class="fa fa-link"></i></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-top">
-                            <p>By Alex  /  June 20, 2017  /  <i class="fa fa-comments-o"></i> 4</p>
-                        </div>
-                        <div class="blog-bottom">
-                            <h2><a href="blog-details.html">I must explain to you how all this a mistaken idea </a></h2>
-                            <a href="blog-details.html">read more</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="single-blog">
-                    <div class="blog-img">
-                        <a href="blog-details.html"><img src="~/assets/img/blog/blog2.jpg" alt="blog"></a>
-                        <div class="blog-hover">
-                            <a href="blog-details.html"><i class="fa fa-link"></i></a>
-                        </div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-top">
-                            <p>By Alex  /  June 20, 2017  /  <i class="fa fa-comments-o"></i> 4</p>
-                        </div>
-                        <div class="blog-bottom">
-                            <h2><a href="blog-details.html">I must explain to you how all this a mistaken idea </a></h2>
-                            <a href="blog-details.html">read more</a>
+                        <div class="blog-content">
+                            <div class="blog-top">
+                                <p>@item.Author/@item.Time <i class="fa fa-comments-o"></i> 4</p>
+                            </div>
+                            <div class="blog-bottom">
+                                <h2><a href="blog-details.html">@item.Description </a></h2>
+                                <a href="blog-details.html">read more</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4 hidden-sm col-xs-12">
-                <div class="single-blog">
-                    <div class="blog-img">
-                        <a href="blog-details.html"><img src="~/assets/img/blog/blog3.jpg" alt="blog"></a>
-                        <div class="blog-hover">
-                            <a href="blog-details.html"><i class="fa fa-link"></i></a>
-                        </div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-top">
-                            <p>By Alex  /  June 20, 2017  /  <i class="fa fa-comments-o"></i> 4</p>
-                        </div>
-                        <div class="blog-bottom">
-                            <h2><a href="blog-details.html">I must explain to you how all this a mistaken idea </a></h2>
-                            <a href="blog-details.html">read more</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            }
+
         </div>
     </div>
 </div>

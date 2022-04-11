@@ -24,6 +24,12 @@ namespace AspNetCore.ViewModels
 
         public List<Testimonial> Testimonials { get; set; }
 
+        public List<Blog> Blogs { get; set; }
+
+
+
+
+
 
 
 

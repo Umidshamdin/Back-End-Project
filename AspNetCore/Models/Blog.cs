@@ -8,24 +8,19 @@ using System.Threading.Tasks;
 
 namespace AspNetCore.Models
 {
-    public class Testimonial
-    {
+    public class Blog
+    {    
         public int Id { get; set; }
-
-        [Required]
         public string Image { get; set; }
+        public string Author { get; set; }
+        public DateTime Time { get; set; }
+        public string BlogName { get; set; }
 
-        [NotMapped]
-        [Required]
-        public IFormFile Photo { get; set; }
-
+        [MinLength(13, ErrorMessage = "13-den asagi ola bilmez")]
         public string Description { get; set; }
 
-        public string Name { get; set; }
-
-        public string Posinition { get; set; }
-
-
-
+        [Required, NotMapped]
+        public IFormFile Photo { get; set; }
     }
 }
+

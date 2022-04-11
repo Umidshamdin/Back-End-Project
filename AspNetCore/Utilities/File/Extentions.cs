@@ -14,7 +14,7 @@ namespace AspNetCore.Utilities.File
         }
         public static bool CheckFileSize(this IFormFile file, long size)
         {
-            return file.Length / 1024 > size;
+            return file.Length / 1024 < size;
         }
     }
 }
