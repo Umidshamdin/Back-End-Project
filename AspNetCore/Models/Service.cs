@@ -11,6 +11,5 @@ namespace AspNetCore.Models
         public string Header { get; set; }
         public string Description { get; set; }
 
-
     }
 }

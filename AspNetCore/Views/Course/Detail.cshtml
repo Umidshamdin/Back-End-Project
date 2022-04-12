@@ -1,6 +1,6 @@
-﻿
+﻿@model Course
 @{
-    ViewData["Title"] = "CourseDetail";
+    ViewData["Title"] = "Detail";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -28,22 +28,22 @@
             <div class="col-md-8">
                 <div class="courses-details">
                     <div class="courses-details-img">
-                        <img src="~/assets/img/course/courses-details.jpg" alt="courses-details">
+                        <img src="¬/assets/img/course/@Model.Image." alt="courses-details">
                     </div>
                     <div class="course-details-content">
-                        <h2>CSE ENGINEERING</h2>
-                        <p>I must explain to you how all this a mistaken idea of denouncing great explorer of the rut the is lder of human happiness pcias unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit asnatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui </p>
+                        <h2>@Model.Name</h2>
+                        <p>@Model.Description </p>
                         <div class="course-details-left">
                             <div class="single-course-left">
-                                <h3>about course</h3>
+                                <h3>@Model.About</h3>
                                 <p>I must explain to you how all this a mistaken idea of ncing great explorer of the rut the is lder of human happinescias unde omnis iste natus error sit volptatem accuntium mque laudantium perspiciatis unde omnis iste natuss</p>
                             </div>
                             <div class="single-course-left">
-                                <h3>how to apply</h3>
+                                <h3>@Model.Apply</h3>
                                 <p>I must explain to you how all this a mistaken idea of ncing great explorer of the rut the is lder of human happinescias unde omnis iste natus error sit volptatem accuntium mque laudantium perspiciatis unde omnis iste natuss</p>
                             </div>
                             <div class="single-course-left">
-                                <h3>certification</h3>
+                                <h3>@Model.Certification</h3>
                                 <p class="margin">I must explain to you how all this a mistaken idea of ncing great explorer of the rut the is lder of human happinescias unde omnis iste natus error sit volptatem accuntium mque laudantium perspiciatis unde omnis iste natuss</p>
                                 <p>I must explain to you how all this a mistaken idea of ncing great explorer of the rut the is lder of human</p>
                             </div>
@@ -51,16 +51,13 @@
                         <div class="course-details-right">
                             <h3>COURSE FEATURES</h3>
                             <ul>
-                                <li>@Model.CourseFeatures</li>
-                                <li>@Model.Duration</li>
-                                <li>@Model.ClassDuration</li>
-                                <li>@Model.Level</li>
-                                <li>@Model.Language</li>
-                                <li>@Model.Assesments</li>
-
-
-
-
+                                <li>starts <span>@Model.Feature.Time</span></li>
+                                <li>duration <span>@Model.Feature.Duration</span></li>
+                                <li>class duration <span>@Model.Feature.ClassDuration</span></li>
+                                <li>skill level <span>@Model.Feature.Level</span></li>
+                                <li>language <span>@Model.Feature.Language</span></li>
+                                <li>students <span>@Model.Feature.StudentCount</span></li>
+                                <li>assesments <span>@Model.Feature.Assesments</span></li>
                             </ul>
                             <h3 class="red">course fee $789</h3>
                         </div>
@@ -117,7 +114,7 @@
                     </div>
                     <div class="single-blog-widget mb-50">
                         <div class="single-blog-banner">
-                            <a href="blog-details.html" id="blog"><img src="~/assets/img/blog/blog-img.jpg" alt="blog"></a>
+                            <a href="blog-details.html" id="blog"><img src="img/blog/blog-img.jpg" alt="blog"></a>
                             <h2>best<br> eductaion<br> theme</h2>
                         </div>
                     </div>
@@ -126,7 +123,7 @@
                         <div class="single-post mb-30">
                             <div class="single-post-img">
                                 <a href="blog-details.html">
-                                    <img src="~/assets/img/post/post1.jpg" alt="post">
+                                    <img src="img/post/post1.jpg" alt="post">
                                     <div class="blog-hover">
                                         <i class="fa fa-link"></i>
                                     </div>
@@ -140,7 +137,7 @@
                         <div class="single-post mb-30">
                             <div class="single-post-img">
                                 <a href="blog-details.html">
-                                    <img src="~/assets/img/post/post2.jpg" alt="post">
+                                    <img src="img/post/post2.jpg" alt="post">
                                     <div class="blog-hover">
                                         <i class="fa fa-link"></i>
                                     </div>
@@ -154,7 +151,7 @@
                         <div class="single-post">
                             <div class="single-post-img">
                                 <a href="blog-details.html">
-                                    <img src="~/assets/img/post/post3.jpg" alt="post">
+                                    <img src="img/post/post3.jpg" alt="post">
                                     <div class="blog-hover">
                                         <i class="fa fa-link"></i>
                                     </div>

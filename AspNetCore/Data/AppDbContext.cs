@@ -15,7 +15,7 @@ namespace AspNetCore.Data
         }
 
         public DbSet<Slider> Sliders { get; set; }
-        public DbSet<SliderDetail> SliderDetails { get; set; }
+       
 
         public DbSet<Service> Services { get; set; }
 
@@ -32,6 +32,10 @@ namespace AspNetCore.Data
         public DbSet<Testimonial> Testimonials { get; set; }
 
         public DbSet<Blog> Blogs { get; set; }
+
+        public DbSet<Course> Courses { get; set; }
+
+
 
 
 

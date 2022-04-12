@@ -30,6 +30,11 @@ namespace AspNetCore.Areas.AdminArea.Controllers
             List<Slider> sliders = await _context.Sliders.AsNoTracking().ToListAsync();
             return View(sliders);
         }
+        public IActionResult Detail(int Id)
+        {
+            var slider = _context.Sliders.FirstOrDefault(m => m.Id == Id);
+            return View(slider);
+        }
 
         public IActionResult Create()
         {
@@ -48,7 +53,7 @@ namespace AspNetCore.Areas.AdminArea.Controllers
                 ModelState.AddModelError("Photo", "Image type is wrong");
                 return View();
             }
-            if (!slider.Photo.CheckFileSize(200))
+            if (!slider.Photo.CheckFileSize(2000))
             {
                 ModelState.AddModelError("Photo", "Image size is wrong");
                 return View();
@@ -64,6 +69,18 @@ namespace AspNetCore.Areas.AdminArea.Controllers
             }
 
             slider.Image = fileName;
+
+
+            bool isExist = _context.Sliders.Any(m => m.Header.ToLower().Trim() == slider.Header.ToLower().Trim());
+
+            if (isExist)
+            {
+                ModelState.AddModelError("Header", "bu artiq movcuddur");
+                return View();
+            }
+
+
+            await _context.Sliders.AddAsync(slider);
 
             await _context.Sliders.AddAsync(slider);
             await _context.SaveChangesAsync();
@@ -102,8 +119,11 @@ namespace AspNetCore.Areas.AdminArea.Controllers
         public async Task<IActionResult> Update(int id,Slider slider)
         {
             var dbslider = await GetSliderById(id);
+            if (slider == null) return NotFound();
 
             if (dbslider == null) return NotFound();
+            if (id != slider.Id) return NotFound();
+
 
             if (ModelState["Photo"].ValidationState == ModelValidationState.Invalid) return View();
 
@@ -113,7 +133,7 @@ namespace AspNetCore.Areas.AdminArea.Controllers
                 ModelState.AddModelError("Photo", "Image type is wrong");
                 return View(dbslider);
             }
-            if (!slider.Photo.CheckFileSize(200))
+            if (!slider.Photo.CheckFileSize(2000))
             {
                 ModelState.AddModelError("Photo", "Image size is wrong");
                 return View(dbslider);
@@ -124,7 +144,7 @@ namespace AspNetCore.Areas.AdminArea.Controllers
 
             Helper.DeleteFile(path);
 
-            if (slider == null) return NotFound();
+          
 
             string fileName = Guid.NewGuid().ToString() + "_" + slider.Photo.FileName;
 
@@ -135,6 +155,9 @@ namespace AspNetCore.Areas.AdminArea.Controllers
                 await slider.Photo.CopyToAsync(stream);
             }
             dbslider.Image = fileName;
+            dbslider.Header = slider.Header;
+            dbslider.Description = slider.Description;
+           
             await _context.SaveChangesAsync();
 
 

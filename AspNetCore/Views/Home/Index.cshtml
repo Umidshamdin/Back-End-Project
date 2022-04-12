@@ -17,8 +17,8 @@
                             <div class="col-md-10 col-md-offset-1">
                                 <div class="slide-content-wrapper">
                                     <div class="slide-content text-center">
-                                        <h2>@Model.SliderDetail.Header</h2>
-                                        <p>@Model.SliderDetail.Description </p>
+                                        <h2>@item.Header</h2>
+                                        <p>@item.Description </p>
                                         <a class="default-btn" href="about.html">Learn more</a>
                                     </div>
                                 </div>
@@ -85,59 +85,27 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="single-course">
-                    <div class="course-img">
-                        <a href="course-details.html">
-                            <img src="~/assets/img/course/course1.jpg" alt="course">
-                            <div class="course-hover">
-                                <i class="fa fa-link"></i>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="course-content">
-                        <h3><a href="course-details.html">CSE ENGINEERING</a></h3>
-                        <p>I must explain to you how all this a mistaken idea of denouncing great explorer of the rut the is lder of human happiness</p>
-                        <a asp-controller="Home" asp-action="CourseDetail" class="default-btn">read more</a>
+            @foreach (var item in Model.Courses)
+            {
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="single-course">
+                        <div class="course-img">
+                            <a href="course-details.html">
+                                <img src="~/assets/img/course/@item.Image" alt="course">
+                                <div class="course-hover">
+                                    <i class="fa fa-link"></i>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="course-content">
+                            <h3><a href="course-details.html">@item.Name</a></h3>
+                            <p>@item.Description</p>
+                            <a asp-controller="Course" asp-action="Detail" asp-route-Id="@item.Id">read more</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="single-course">
-                    <div class="course-img">
-                        <a href="course-details.html">
-                            <img src="~/assets/img/course/course2.jpg" alt="course">
-                            <div class="course-hover">
-                                <i class="fa fa-link"></i>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="course-content">
-                        <h3><a href="course-details.html">political science</a></h3>
-                        <p>I must explain to you how all this a mistaken idea of denouncing great explorer of the rut the is lder of human happiness</p>
-                        <a asp-controller="Home" asp-action="CourseDetail" class="default-btn">read more</a>
+            }
 
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 hidden-sm col-xs-12">
-                <div class="single-course">
-                    <div class="course-img">
-                        <a href="course-details.html">
-                            <img src="~/assets/img/course/course3.jpg" alt="course">
-                            <div class="course-hover">
-                                <i class="fa fa-link"></i>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="course-content">
-                        <h3><a href="course-details.html">micro biology</a></h3>
-                        <p>I must explain to you how all this a mistaken idea of denouncing great explorer of the rut the is lder of human happiness</p>
-                        <a asp-controller="Home" asp-action="CourseDetail" class="default-btn">read more</a>
-
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>

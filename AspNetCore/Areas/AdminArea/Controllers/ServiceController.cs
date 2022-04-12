@@ -25,6 +25,11 @@ namespace AspNetCore.Areas.AdminArea.Controllers
             List<Service> services = await _context.Services.AsNoTracking().ToListAsync();
             return View(services);
         }
+        public IActionResult Detail(int Id)
+        {
+            var service = _context.Services.FirstOrDefault(m => m.Id == Id);
+            return View(service);
+        }
         public IActionResult Create()
         {
             return View();

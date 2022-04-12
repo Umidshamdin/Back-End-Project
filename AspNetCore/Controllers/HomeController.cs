@@ -21,25 +21,29 @@ namespace AspNetCore.Controllers
         public async Task<IActionResult> Index()
         {
             List<Slider> sliders = await _context.Sliders.ToListAsync();
-            SliderDetail sliderDetail = await _context.SliderDetails.FirstOrDefaultAsync();
+          
             List<Service> services = await _context.Services.ToListAsync();
             About about = await _context.Abouts.FirstOrDefaultAsync();
-            List<CourseFeatures> courseFeatures = await _context.CourseFeatures.ToListAsync();
+
+            List<Course> courses=await _context.Courses.Include(m=>m.Feature).Take(4).Skip(1).ToListAsync();
+            List<Notice> notices = await _context.Notices.ToListAsync();
             List<Event> events = await _context.Events.ToListAsync();
             List<EventDetail> eventDetails = await _context.EventDetails.ToListAsync();
-
+            List<CourseFeatures> courseFeatures = await _context.CourseFeatures.ToListAsync();
             List<Testimonial> testimonials = await _context.Testimonials.ToListAsync();
 
             List<Blog> blogs = await _context.Blogs.Take(4).Skip(1).ToListAsync();
 
 
-            List<Notice> notices = await _context.Notices.ToListAsync();
+            
             HomeVM homeVM = new HomeVM
             {
                 Sliders=sliders,
-                SliderDetail=sliderDetail,
+                
                 Services=services,
                 About=about,
+                Courses=courses,
+                CourseFeatures=courseFeatures,
                 Notices=notices,
                 Events=events,
                 EventDetails=eventDetails,
@@ -47,7 +51,8 @@ namespace AspNetCore.Controllers
                 Blogs=blogs
                 
             };
-           
+
+            
 
             return View(homeVM);
         }

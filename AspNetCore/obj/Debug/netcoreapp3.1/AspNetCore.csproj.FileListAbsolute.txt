@@ -153,7 +153,6 @@ C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3
 C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\_ViewImports.cshtml.g.cs
 C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\_ViewStart.cshtml.g.cs
 C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\About\Index.cshtml.g.cs
-C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\Home\CourseDetail.cshtml.g.cs
 C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
@@ -176,3 +175,11 @@ C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3
 C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Blog\Update.cshtml.g.cs
 C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\Blog\Index.cshtml.g.cs
 C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\Blog\Detail.cshtml.g.cs
+C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Slider\Detail.cshtml.g.cs
+C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Service\Detail.cshtml.g.cs
+C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Course\Index.cshtml.g.cs
+C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Course\Create.cshtml.g.cs
+C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Course\Update.cshtml.g.cs
+C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Course\Detail.cshtml.g.cs
+C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\Course\Index.cshtml.g.cs
+C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\Course\Detail.cshtml.g.cs

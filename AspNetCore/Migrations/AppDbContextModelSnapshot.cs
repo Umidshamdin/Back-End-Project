@@ -68,6 +68,45 @@ namespace AspNetCore.Migrations
                     b.ToTable("Blogs");
                 });
 
+            modelBuilder.Entity("AspNetCore.Models.Course", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("About")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Apply")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Certification")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CourseFeatureId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("FeatureId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FeatureId");
+
+                    b.ToTable("Courses");
+                });
+
             modelBuilder.Entity("AspNetCore.Models.CourseFeatures", b =>
                 {
                     b.Property<int>("Id")
@@ -198,6 +237,12 @@ namespace AspNetCore.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Header")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Image")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -205,24 +250,6 @@ namespace AspNetCore.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Sliders");
-                });
-
-            modelBuilder.Entity("AspNetCore.Models.SliderDetail", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Header")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("SliderDetails");
                 });
 
             modelBuilder.Entity("AspNetCore.Models.Testimonial", b =>
@@ -248,6 +275,13 @@ namespace AspNetCore.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Testimonials");
+                });
+
+            modelBuilder.Entity("AspNetCore.Models.Course", b =>
+                {
+                    b.HasOne("AspNetCore.Models.CourseFeatures", "Feature")
+                        .WithMany()
+                        .HasForeignKey("FeatureId");
                 });
 
             modelBuilder.Entity("AspNetCore.Models.Event", b =>

@@ -9,7 +9,7 @@ namespace AspNetCore.ViewModels
     public class HomeVM
     {
         public List<Slider> Sliders { get; set; }
-        public SliderDetail SliderDetail { get; set; }
+      
 
         public List<Service> Services { get; set; }
 
@@ -26,10 +26,8 @@ namespace AspNetCore.ViewModels
 
         public List<Blog> Blogs { get; set; }
 
-
-
-
-
+        public List<Course> Courses { get; set; }
+        public List<CourseFeatures> CourseFeatures { get; set; }
 
 
 

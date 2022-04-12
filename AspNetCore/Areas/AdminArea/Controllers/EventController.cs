@@ -48,7 +48,7 @@ namespace AspNetCore.Areas.AdminArea.Controllers
                 ModelState.AddModelError("Photo", "Image type is wrong");
                 return View();
             }
-            if (!eventVM.Photo.CheckFileSize(200))
+            if (!eventVM.Photo.CheckFileSize(2000))
             {
                 ModelState.AddModelError("Photo", "Image size is wrong");
                 return View();
