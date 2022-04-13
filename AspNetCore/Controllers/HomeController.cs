@@ -27,13 +27,13 @@ namespace AspNetCore.Controllers
 
             List<Course> courses=await _context.Courses.Include(m=>m.Feature).Take(4).Skip(1).ToListAsync();
             List<Notice> notices = await _context.Notices.ToListAsync();
-            List<Event> events = await _context.Events.ToListAsync();
-            List<EventDetail> eventDetails = await _context.EventDetails.ToListAsync();
+        
             List<CourseFeatures> courseFeatures = await _context.CourseFeatures.ToListAsync();
             List<Testimonial> testimonials = await _context.Testimonials.ToListAsync();
 
             List<Blog> blogs = await _context.Blogs.Take(4).Skip(1).ToListAsync();
 
+            List<Event> events = await _context.Events.ToListAsync();
 
             
             HomeVM homeVM = new HomeVM
@@ -45,10 +45,11 @@ namespace AspNetCore.Controllers
                 Courses=courses,
                 CourseFeatures=courseFeatures,
                 Notices=notices,
-                Events=events,
-                EventDetails=eventDetails,
+                
                 Testimonials=testimonials,
-                Blogs=blogs
+                Blogs=blogs,
+                Events=events
+
                 
             };
 

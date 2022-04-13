@@ -1,0 +1,128 @@
+﻿
+@model List<Teacher>
+@{
+    ViewData["Title"] = "Course";
+    int count = 1;
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="header d-flex justify-content-between mt-3">
+
+            <div>
+                <a class="btn btn-success" asp-action="Create">Create</a>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            Number
+                        </th>
+                        <th>
+                            Image
+                        </th>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Position
+                        </th>
+                        <th>
+                            About
+                        </th>
+                        <th>
+                            Degree
+                        </th>
+                        <th>
+                            Experience
+                        </th>
+                        <th>
+                            Hobby
+                        </th>
+                        <th>
+                            Faculty
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                        <th>
+                            PhoneNumber
+                        </th>
+                        <th>
+                            SkillName
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var course in Model)
+                    {
+                    <tr>
+                        <td>
+                            @count
+                        </td>
+                        <td>
+                            <img src="~/assets/img/teacher/@course.Image" style="width:150px;height:130px" alt="slider" />
+                        </td>
+                        <td>
+                            @course.Name
+                        </td>
+                        <td>
+                            @course.Posinition
+                        </td>
+                        <td>
+                            @course.About
+                        </td>
+                        <td>
+                            @course.Degree
+                        </td>
+                        <td>
+                            @course.Experience
+                        </td>
+                        <td>
+                            @course.Hobby
+                        </td>
+                        <td>
+                            @course.Faculty
+                        </td>
+                        <td>
+                            @course.Email
+                        </td>
+                        <td>
+                            @course.PhoneNumber
+                        </td>
+                        <td>
+                            @course.SkillName
+                        </td>
+
+
+
+                        <td>
+                            <a class="btn btn-primary btn-sm" asp-action="Detail" asp-route-id="@course.Id">
+                                Detail
+                            </a>
+                            <a class="btn btn-warning btn-sm" asp-action="Update" asp-route-id="@course.Id">
+                                Update
+                            </a>
+                            <form style="display:inline-block" method="post" asp-action="Delete" asp-route-id="@course.Id">
+                                <button class="btn btn-danger btn-sm" type="submit">
+                                    Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                        count++;
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+

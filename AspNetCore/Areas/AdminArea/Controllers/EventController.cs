@@ -2,7 +2,6 @@
 using AspNetCore.Models;
 using AspNetCore.Utilities.File;
 using AspNetCore.Utilities.Helpers;
-using AspNetCore.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -15,16 +14,18 @@ using System.Threading.Tasks;
 
 namespace AspNetCore.Areas.AdminArea.Controllers
 {
+
     [Area("AdminArea")]
     public class EventController : Controller
     {
+
         private readonly AppDbContext _context;
         public readonly IWebHostEnvironment _env;
-        public EventController(AppDbContext context,  IWebHostEnvironment env)
+        public EventController(AppDbContext context, IWebHostEnvironment env)
         {
             _context = context;
             _env = env;
-           
+
         }
         public async Task<IActionResult> Index()
         {
@@ -36,102 +37,56 @@ namespace AspNetCore.Areas.AdminArea.Controllers
             return View();
         }
 
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(EventVM eventVM)
+        public async Task<IActionResult> Create(Event events)
         {
             if (ModelState["Photo"].ValidationState == ModelValidationState.Invalid) return View();
 
 
-            if (!eventVM.Photo.CheckFileType("image/"))
+            if (!events.Photo.CheckFileType("image/"))
             {
                 ModelState.AddModelError("Photo", "Image type is wrong");
                 return View();
             }
-            if (!eventVM.Photo.CheckFileSize(2000))
+            if (!events.Photo.CheckFileSize(2000))
             {
                 ModelState.AddModelError("Photo", "Image size is wrong");
                 return View();
             }
 
-            string fileName = Guid.NewGuid().ToString() + "_" + eventVM.Photo.FileName;
+            string fileName = Guid.NewGuid().ToString() + "_" + events.Photo.FileName;
 
             string path = Helper.GetFilePath(_env.WebRootPath, "assets/img/event", fileName);
 
             using (FileStream stream = new FileStream(path, FileMode.Create))
             {
-                await eventVM.Photo.CopyToAsync(stream);
+                await events.Photo.CopyToAsync(stream);
             }
 
-            EventDetail eventDetail = new EventDetail
+            events.Image = fileName;
+
+
+            bool isExist = _context.Events.Any(m => m.Header.ToLower().Trim() == events.Header.ToLower().Trim());
+
+            if (isExist)
             {
-                
-                DetailImage = fileName,
-                
-                Name = eventVM.Name,
-                Description = eventVM.Description
-
-            };
-
-           
-          
-
-
-
-            await _context.EventDetails.AddAsync(eventDetail);
-            await _context.SaveChangesAsync();
-
-            if (!eventVM.Photo.CheckFileType("image/"))
-            {
-                ModelState.AddModelError("Photo", "Image type is wrong");
-                return View();
-            }
-            if (!eventVM.Photo.CheckFileSize(200))
-            {
-                ModelState.AddModelError("Photo", "Image size is wrong");
+                ModelState.AddModelError("Header", "bu artiq movcuddur");
                 return View();
             }
 
-            fileName = Guid.NewGuid().ToString() + "_" + eventVM.Photo.FileName;
 
-            path = Helper.GetFilePath(_env.WebRootPath, "assets/img/event", fileName);
-
-            using (FileStream stream = new FileStream(path, FileMode.Create))
-            {
-                await eventVM.Photo.CopyToAsync(stream);
-            }
-
-            List<EventDetail> eventDetails = await _context.EventDetails.ToListAsync();
-
-            Event @event = new Event
-            {
-                Image=fileName,
-                Time = (DateTime) eventVM.Time,
-                Header=eventVM.Header,
-                DayTime=eventVM.DayTime,
-                Address=eventVM.Address,
-               
-                EventDetailId=eventDetails.LastOrDefault().Id
-            };
-
-            await _context.Events.AddAsync(@event);
+            await _context.Events.AddAsync(events);
             await _context.SaveChangesAsync();
-
-
             return RedirectToAction(nameof(Index));
-        }
-
-        public IActionResult Detail(int Id)
-        {
-            var even = _context.Events.FirstOrDefault(m => m.Id == Id);
-            return View(even);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
         {
-            Event events = await GetSliderById(id);
+            Event events = await GetEventById(id);
 
             if (events == null) return NotFound();
 
@@ -144,101 +99,79 @@ namespace AspNetCore.Areas.AdminArea.Controllers
             return RedirectToAction(nameof(Index));
 
         }
-
-        private async Task<Event> GetSliderById(int id)
+        private async Task<Event> GetEventById(int id)
         {
             return await _context.Events.FindAsync(id);
         }
 
-        #region Edit
-        public async Task<IActionResult> Update(int Id)
+        public async Task<IActionResult> Update(int id)
         {
-            var @event = await GetEventById(Id);
-            EventVM eventVM = new EventVM
-            {
-                Time = @event.Time,
-                Header=@event.Header,
-                DayTime = @event.DayTime,
-                Address = @event.Address,
-                Name=@event.EventDetail.Name,
-                Description = @event.EventDetail.Description,
-                Image = @event.Image,
-                DetailImage = @event.EventDetail.DetailImage
-            };
-            if (eventVM == null) return NotFound();
-            return View(eventVM);
+            var events = await GetEventById(id);
+            if (events == null) return NotFound();
+            return View(events);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(int Id, EventVM eventVM)
+        public async Task<IActionResult> Update(int id, Event events)
         {
-            var dbEvents = await GetEventById(Id);
-            if (dbEvents == null) return NotFound();
+            var dbevents = await GetEventById(id);
+            if (events == null) return NotFound();
+            if (dbevents == null) return NotFound();
+            if (id != events.Id) return NotFound();
 
             if (ModelState["Photo"].ValidationState == ModelValidationState.Invalid) return View();
 
-            if (!eventVM.Photo.CheckFileType("image/"))
+
+            if (!events.Photo.CheckFileType("image/"))
             {
                 ModelState.AddModelError("Photo", "Image type is wrong");
-                return View(dbEvents);
+                return View(events);
             }
-
-            if (!eventVM.Photo.CheckFileSize(800))
+            if (!events.Photo.CheckFileSize(200))
             {
                 ModelState.AddModelError("Photo", "Image size is wrong");
-                return View(dbEvents);
-            }
-            if (ModelState["DetailPhoto"].ValidationState == ModelValidationState.Invalid) return View();
-
-            if (!eventVM.DetailPhoto.CheckFileType("image/"))
-            {
-                ModelState.AddModelError("DetailPhoto", "Image type is wrong");
-                return View(dbEvents);
+                return View(events);
             }
 
-            if (!eventVM.DetailPhoto.CheckFileSize(800))
-            {
-                ModelState.AddModelError("DetailPhoto", "Image size is wrong");
-                return View(dbEvents);
-            }
 
-            string path = Helper.GetFilePath(_env.WebRootPath, "assets/img/event", dbEvents.Image);
+            string path = Helper.GetFilePath(_env.WebRootPath, "assets/img/event", dbevents.Image);
+
             Helper.DeleteFile(path);
 
-            string pathDetail = Helper.GetFilePath(_env.WebRootPath, "assets/img/event", dbEvents.EventDetail.DetailImage);
-            Helper.DeleteFile(pathDetail);
 
-            string fileName = Guid.NewGuid().ToString() + "_" + eventVM.Photo.FileName;
-            path = Helper.GetFilePath(_env.WebRootPath, "assets/img/event", fileName);
-            using (FileStream stream = new FileStream(path, FileMode.Create))
+
+            string fileName = Guid.NewGuid().ToString() + "_" + events.Photo.FileName;
+
+            string newPath = Helper.GetFilePath(_env.WebRootPath, "assets/img/event", fileName);
+
+            using (FileStream stream = new FileStream(newPath, FileMode.Create))
             {
-                await eventVM.Photo.CopyToAsync(stream);
+                await events.Photo.CopyToAsync(stream);
             }
-            dbEvents.Image = fileName;
-            fileName = Guid.NewGuid().ToString() + "_" + eventVM.DetailPhoto.FileName;
-            path = Helper.GetFilePath(_env.WebRootPath, "assets/img/event", fileName);
-            using (FileStream stream = new FileStream(path, FileMode.Create))
-            {
-                await eventVM.DetailPhoto.CopyToAsync(stream);
-            }
-            dbEvents.EventDetail.DetailImage = fileName;
+
+
+            dbevents.Image = fileName;
+            dbevents.Time = events.Time;
+            dbevents.Header = events.Header;
+            dbevents.DayTime = events.DayTime;
+            dbevents.Location = events.Location;
+
+
+
+
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
-        }
-        #endregion
 
-        #region Helper
-        private async Task<Event> GetEventById(int Id)
+
+
+        }
+
+        public IActionResult Detail(int Id)
         {
-            return await _context.Events.Where(m => m.Id == Id).Include(m => m.EventDetail).FirstOrDefaultAsync();
+            var events = _context.Events.FirstOrDefault(m => m.Id == Id);
+            return View(events);
         }
-        #endregion
-
-
-
-
-
     }
 }

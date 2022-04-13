@@ -1,5 +1,4 @@
-﻿
-@model List<Event>
+﻿@model List<Event>
 @{
     ViewData["Title"] = "Index";
     int count = 1;
@@ -9,7 +8,6 @@
 <div class="container">
     <div class="row">
         <div class="header d-flex justify-content-between mt-3">
-
             <div>
                 <a class="btn btn-success" asp-action="Create">Create</a>
             </div>
@@ -32,10 +30,13 @@
                             Header
                         </th>
                         <th>
-                            Daytime
+                            DayTime
                         </th>
                         <th>
-                            Address
+                            Location
+                        </th>
+                        <th>
+                            Description
                         </th>
                     </tr>
                 </thead>
@@ -50,7 +51,7 @@
                             <img src="~/assets/img/event/@events.Image" style="width:50px;height:50px" alt="slider" />
                         </td>
                         <td>
-                            @events.Time;
+                            @events.Time
                         </td>
                         <td>
                             @events.Header;
@@ -59,12 +60,11 @@
                             @events.DayTime;
                         </td>
                         <td>
-                            @events.Address;
+                            @events.Location;
                         </td>
-                       
-
-
-
+                        <td>
+                            @events.Description;
+                        </td>
                         <td>
                             <a class="btn btn-primary btn-sm" asp-action="Detail" asp-route-id="@events.Id">
                                 Detail
@@ -81,10 +81,9 @@
                     </tr>
                         count++;
                     }
-
                 </tbody>
             </table>
         </div>
     </div>
-
 </div>
+

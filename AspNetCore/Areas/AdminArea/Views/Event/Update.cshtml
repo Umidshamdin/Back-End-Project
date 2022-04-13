@@ -1,61 +1,55 @@
-﻿@model EventVM
+﻿
+@model Event
 @{
     ViewData["Title"] = "Update";
 
 }
 
+<div class="container mt-5">
+    <div class=" img">
+        <img style="width:400px;height:400px;" src="~/assets/img/event/@Model.Image" alt="Alternate Text" />
+    </div>
+    <form class="forms-sample" method="post" asp-action="Update" enctype="multipart/form-data">
 
-<div class="container my-5">
-
-
-    <form class="forms-sample mt-5" method="post" asp-action="Update" enctype="multipart/form-data">
         <div class="form-group">
-            <div><img src="~/assets/img/event/@Model.Image" alt="Slider" style="width:150px; height:150px" /></div>
-            <label asp-for="Photo">Event Image:</label>
+            <label>Choose photo</label>
             <input class="form-control" style="width:300px" asp-for="Photo">
-            <span class="text-danger" asp-validation-for="Photo"></span>
-        </div>
-        <div class="form-group">
-            <div><img src="~/assets/img/event/@Model.Image" alt="Slider" style="width:150px; height:150px" /></div>
-            <label asp-for="DetailPhoto">Event Image:</label>
-            <input class="form-control" style="width:300px" asp-for="DetailPhoto">
-            <span class="text-danger" asp-validation-for="DetailPhoto"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="DayTime">Date:</label>
-            <input class="form-control" style="width:300px" asp-for="DayTime">
-            <span class="text-danger" asp-validation-for="DayTime"></span>
-        </div>
 
-        <div class="form-group">
-            <label asp-for="Header">Header:</label>
-            <input class="form-control" style="width:300px" asp-for="Header">
-            <span class="text-danger" asp-validation-for="Header"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Time">Time:</label>
-            <input class="form-control" style="width:300px" asp-for="Time">
-            <span class="text-danger" asp-validation-for="Time"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Address">Location:</label>
-            <input class="form-control" style="width:300px" asp-for="Address">
-            <span class="text-danger" asp-validation-for="Address"></span>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="Name">Detail Nameme:</label>
-            <input class="form-control" style="width:300px" asp-for="Name">
-            <span class="text-danger" asp-validation-for="Name"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Description">Desc:</label>
-            <input class="form-control" style="width:300px" asp-for="Description">
-            <span class="text-danger" asp-validation-for="Description"></span>
         </div>
 
 
+        <div class="form-group">
+            <label>Choose Name</label>
+            <input type="text" class="form-control" style="width:300px" asp-for="Time" value="@Model.Time">
+
+        </div>
+        <div class="form-group">
+            <label>Choose Name</label>
+            <input type="text" class="form-control" style="width:300px" asp-for="Header" value="@Model.Header">
+
+        </div>
+        <div class="form-group">
+            <label>Choose Name</label>
+            <input type="text" class="form-control" style="width:300px" asp-for="DayTime" value="@Model.DayTime">
+
+        </div>
+
+        <div class="form-group">
+            <label>Choose Description</label>
+            <input type="text" class="form-control" style="width:300px" asp-for="Location" value="@Model.Location">
+
+        </div>
+        <div class="form-group">
+            <label>Choose Description</label>
+            <input type="text" class="form-control" style="width:300px" asp-for="Description" value="@Model.Description">
+
+        </div>
         <button type="submit" class="btn btn-primary me-2">Submit</button>
-        <a asp-action="Index" class="btn btn-light">Cancel</a>
+
+
+
     </form>
+
+
+
 </div>

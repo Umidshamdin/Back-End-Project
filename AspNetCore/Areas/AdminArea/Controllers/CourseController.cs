@@ -68,6 +68,7 @@ namespace AspNetCore.Areas.AdminArea.Controllers
 
             course.Image = fileName;
             
+            
 
 
 

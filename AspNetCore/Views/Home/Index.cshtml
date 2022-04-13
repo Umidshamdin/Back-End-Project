@@ -152,7 +152,7 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="section-title">
-                    <img src="~/assets/img/icon/section.png" alt="section-title">
+                    <img src="~/assets/img/event/section.png" alt="section-title">
                     <h2>UPCOMMING EVENTS</h2>
                 </div>
             </div>
@@ -162,30 +162,28 @@
             {
                 <div class="col-md-6 col-sm-12 col-xs-12">
                     <div class="single-event mb-35">
+                        <div class="event-img">
+                            <a href="event-details.html"><img style="width:220px;height:190px" src="~/assets/img/event/@item.Image" alt="event"></a>
 
 
-                        <div class="single-event hidden-sm hidden-xs">
-                            <div class="event-img">
-                                <a href="event-details.html"><img style="width:260px;height:200px" src="~/assets/img/event/@item.Image" alt="event"></a>
-                            </div>
-                            <div class="event-content text-left">
-                                <h3>@item.Time</h3>
-                                <h4><a href="event-details.html">@item.Header</a></h4>
-                                <ul>
-                                    <li><i class="fa fa-clock-o"></i>@item.DayTime</li>
-                                    <li><i class="fa fa-map-marker"></i>@item.Address</li>
-                                </ul>
-                                <div class="event-content-right">
-                                    <a class="default-btn" href="event-details.html">join now</a>
-                                </div>
+                        </div>
+                        <div class="event-content text-left">
+                            <h3>@item.Time</h3>
+                            <h4><a href="event-details.html">@item.Header</a></h4>
+                            <ul>
+                                <li><i class="fa fa-clock-o"></i>@item.DayTime</li>
+                                <li><i class="fa fa-map-marker"></i>@item.Location</li>
+                            </ul>
+                            <div class="event-content-right">
+                                <a asp-controller="Event" asp-action="Detail" asp-route-Id="@item.Id">read more</a>
+
                             </div>
                         </div>
                     </div>
-
+                   
                 </div>
+
             }
-
-
         </div>
     </div>
 </div>
@@ -193,39 +191,39 @@
 <!-- Testimonial Area Start -->
 
 
-    <div class="testimonial-area pt-110 pb-105 text-center">
-        <div class="container">
-            
-            <div class="row">
-                
-                
-                <div class="testimonial-owl owl-theme owl-carousel">
-                    @foreach (var item in Model.Testimonials)
-                    {
-                        <div class="col-md-8 col-md-offset-2 col-sm-12">
-                            <div class="single-testimonial">
-                                <div class="testimonial-info">
-                                    <div class="testimonial-img">
-                                        <img src="~/assets/img/testimonial/@item.Image" alt="testimonial">
-                                    </div>
-                                    <div class="testimonial-content">
-                                        <p>@item.Description</p>
-                                        <h4>@item.Name</h4>
-                                        <h5>@item.Posinition</h5>
-                                    </div>
+<div class="testimonial-area pt-110 pb-105 text-center">
+    <div class="container">
+
+        <div class="row">
+
+
+            <div class="testimonial-owl owl-theme owl-carousel">
+                @foreach (var item in Model.Testimonials)
+                {
+                    <div class="col-md-8 col-md-offset-2 col-sm-12">
+                        <div class="single-testimonial">
+                            <div class="testimonial-info">
+                                <div class="testimonial-img">
+                                    <img src="~/assets/img/testimonial/@item.Image" alt="testimonial">
+                                </div>
+                                <div class="testimonial-content">
+                                    <p>@item.Description</p>
+                                    <h4>@item.Name</h4>
+                                    <h5>@item.Posinition</h5>
                                 </div>
                             </div>
                         </div>
-                    }
-
-                </div>
-                
+                    </div>
+                }
 
             </div>
-            
+
 
         </div>
+
+
     </div>
+</div>
 
 <!-- Testimonial Area End -->
 <!-- Blog Area Start -->
