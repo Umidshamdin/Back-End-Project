@@ -1,0 +1,123 @@
+﻿
+@model List<Teacher>
+@{
+    ViewData["Title"] = "Index";
+    int count = 1;
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="header d-flex justify-content-between mt-3">
+
+            <div>
+                <a class="btn btn-success" asp-action="Create">Create</a>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            Number
+                        </th>
+                        <th>
+                            Image
+                        </th>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Posinition
+                        </th>
+                        <th>
+                            About
+                        </th>
+                        <th>
+                            Degree
+                        </th>
+                        <th>
+                            Experience
+                        </th>
+                        <th>
+                            Hobby
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                        <th>
+                            PhoneNumber
+                        </th>
+                        <th>
+                            SkillName
+                        </th>
+                      
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var teacher in Model)
+                    {
+                    <tr>
+                        <td>
+                            @count
+                        </td>
+                        <td>
+                            <img src="~/assets/img/teacher/@teacher.Image" style="width:150px;height:130px" alt="slider" />
+                        </td>
+
+                        <td>
+                            @teacher.Name
+                        </td>
+
+                        <td>
+                            @teacher.Posinition
+                        </td>
+                        <td>
+                            @teacher.About
+                        </td>
+                        <td>
+                            @teacher.Degree
+                        </td>
+                        <td>
+                            @teacher.Experience
+                        </td>
+                        <td>
+                            @teacher.Hobby
+                        </td>
+                        <td>
+                            @teacher.Faculty
+                        </td>
+                        <td>
+                            @teacher.Email
+                        </td>
+                        <td>
+                            @teacher.PhoneNumber
+                        </td>
+                        <td>
+                            @teacher.SkillName
+                        </td>
+                        <td>
+                            <a class="btn btn-primary btn-sm" asp-action="Detail" asp-route-id="@teacher.Id">
+                                Detail
+                            </a>
+                            <a class="btn btn-warning btn-sm" asp-action="Update" asp-route-id="@teacher.Id">
+                                Update
+                            </a>
+                            <form style="display:inline-block" method="post" asp-action="Delete" asp-route-id="@teacher.Id">
+                                <button class="btn btn-danger btn-sm" type="submit">
+                                    Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                        count++;
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+

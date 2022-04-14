@@ -1,5 +1,6 @@
 ﻿using AspNetCore.Data;
 using AspNetCore.Models;
+using AspNetCore.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -21,7 +22,15 @@ namespace AspNetCore.Controllers
         public async Task<IActionResult> Index()
         {
             About about = await _context.Abouts.FirstOrDefaultAsync();
-            return View(about);
+            List<Teacher> teachers = await _context.Teachers.Take(5).Skip(1).ToListAsync();
+
+            AboutVM aboutVM = new AboutVM
+            {
+                About=about,
+                Teachers=teachers
+            };
+
+            return View(aboutVM);
         }
     }
 }

@@ -20,8 +20,14 @@ namespace AspNetCore.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            List<Teacher> teachers = await _context.Teachers.ToListAsync();
+            List<Teacher> teachers = await _context.Teachers.Take(10).Skip(1).ToListAsync();
             return View(teachers);
+        }
+
+        public async Task<IActionResult> Detail(int Id)
+        {
+            Teacher teacher = await _context.Teachers.Where(m => m.Id == Id).FirstOrDefaultAsync();
+            return View(teacher);
         }
     }
 }

@@ -1,0 +1,70 @@
+﻿
+@model Teacher
+@{
+    ViewData["Title"] = "Create";
+
+}
+
+<div class="container mt-5">
+    <form class="forms-sample" method="post" asp-action="Create" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="Photo"></label>
+            <input class="form-control" style="width:300px" asp-for="Photo">
+            <span class="text-danger" asp-validation-for="Photo"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input class="form-control" style="width:300px" asp-for="Name">
+            <span class="text-danger" asp-validation-for="Name"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Posinition"></label>
+            <input class="form-control" style="width:300px" asp-for="Posinition">
+            <span class="text-danger" asp-validation-for="Posinition"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="About"></label>
+            <input class="form-control" style="width:300px" asp-for="About">
+            <span class="text-danger" asp-validation-for="About"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Degree"></label>
+            <input class="form-control" style="width:300px" asp-for="Degree">
+            <span class="text-danger" asp-validation-for="Degree"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Experience"></label>
+            <input class="form-control" style="width:300px" asp-for="Experience">
+            <span class="text-danger" asp-validation-for="Experience"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Hobby"></label>
+            <input class="form-control" style="width:300px" asp-for="Hobby">
+            <span class="text-danger" asp-validation-for="Hobby"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Faculty"></label>
+            <input class="form-control" style="width:300px" asp-for="Faculty">
+            <span class="text-danger" asp-validation-for="Faculty"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            <input class="form-control" style="width:300px" asp-for="Email">
+            <span class="text-danger" asp-validation-for="Email"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="PhoneNumber"></label>
+            <input class="form-control" style="width:300px" asp-for="PhoneNumber">
+            <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="SkillName"></label>
+            <input class="form-control" style="width:300px" asp-for="SkillName">
+            <span class="text-danger" asp-validation-for="SkillName"></span>
+        </div>
+        <button type="submit" class="btn btn-primary me-2">Submit</button>
+        <a asp-action="Index" class="btn btn-light">Cancel</a>
+    </form>
+</div>
+
