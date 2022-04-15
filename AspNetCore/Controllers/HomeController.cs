@@ -34,8 +34,10 @@ namespace AspNetCore.Controllers
             List<Blog> blogs = await _context.Blogs.Take(4).Skip(1).ToListAsync();
 
             List<Event> events = await _context.Events.ToListAsync();
+            Subscripe subscripe = await _context.Subscripes.FirstOrDefaultAsync();
 
-            
+
+
             HomeVM homeVM = new HomeVM
             {
                 Sliders=sliders,
@@ -48,7 +50,8 @@ namespace AspNetCore.Controllers
                 
                 Testimonials=testimonials,
                 Blogs=blogs,
-                Events=events
+                Events=events,
+                Subscripe=subscripe
 
                 
             };

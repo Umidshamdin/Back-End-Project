@@ -203,3 +203,5 @@ C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3
 C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\bin\Debug\netcoreapp3.1\MailKit.dll
 C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\bin\Debug\netcoreapp3.1\MimeKit.dll
 C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\Account\ForgotPassword.cshtml.g.cs
+C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\Account\ResetPassword.cshtml.g.cs

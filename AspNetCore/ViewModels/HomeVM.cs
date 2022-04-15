@@ -26,6 +26,8 @@ namespace AspNetCore.ViewModels
         public List<CourseFeatures> CourseFeatures { get; set; }
 
         public List<Event> Events { get; set; }
+        public Subscripe Subscripe { get; set; }
+
 
 
 

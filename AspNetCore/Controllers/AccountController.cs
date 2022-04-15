@@ -172,8 +172,96 @@ namespace AspNetCore.Controllers
         }
         #endregion
 
+        #region ForgotPassword
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordVM forgotPasswordVM)
+        {
+            if (!ModelState.IsValid) return View(forgotPasswordVM);
+
+            var user = await _userManager.FindByEmailAsync(forgotPasswordVM.Email);
+
+            if (user is null)
+            {
+                ModelState.AddModelError("", "This email hasn't been registrated");
+                return View(forgotPasswordVM);
+            }
+
+            var message = new MimeMessage();
+
+            message.From.Add(new MailboxAddress("EduHome", "umidshamdinli853@gmail.com"));
+
+            message.To.Add(new MailboxAddress(user.FullName, user.Email));
+            message.Subject = "Reset Password";
+
+            string emailbody = string.Empty;
+
+            using (StreamReader streamReader = new StreamReader(Path.Combine(_env.WebRootPath, "Templates", "Reset.html")))
+            {
+                emailbody = streamReader.ReadToEnd();
+            }
+
+            string forgotpasswordtoken = await _userManager.GeneratePasswordResetTokenAsync(user);
+            string url = Url.Action(nameof(ResetPassword), "Account", new { email = user.Email, Id = user.Id, token = forgotpasswordtoken, }, Request.Scheme);
+
+            emailbody = emailbody.Replace("{{fullname}}", $"{user.FullName}").Replace("{{code}}", $"{url}");
+
+            message.Body = new TextPart(TextFormat.Html) { Text = emailbody };
+
+            using var smtp = new SmtpClient();
+
+            smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
+            smtp.Authenticate("umidshamdinli853@gmail.com", "Umidshamdinli123");
+            smtp.Send(message);
+            smtp.Disconnect(true);
+            return View();
+        }
+        #endregion
 
 
-       
+        #region Reset Password
+        [HttpGet]
+        public IActionResult ResetPassword(string email, string token)
+        {
+            var resetPasswordModel = new ResetPasswordVM { Email = email, Token = token };
+            return View(resetPasswordModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ResetPassword(ResetPasswordVM resetPasswordVM)
+        {
+            if (!ModelState.IsValid) return View(resetPasswordVM);
+
+            var user = await _userManager.FindByEmailAsync(resetPasswordVM.Email);
+
+            if (user is null) return NotFound();
+
+            IdentityResult result = await _userManager.ResetPasswordAsync(user, resetPasswordVM.Token, resetPasswordVM.Password);
+
+            if (!result.Succeeded)
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError("", item.Description);
+                }
+                return View(resetPasswordVM);
+
+            }
+
+
+            return RedirectToAction(nameof(Login));
+
+        }
+        #endregion
+
+
+
+
     }
 }
