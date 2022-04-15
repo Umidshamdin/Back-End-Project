@@ -1,12 +1,13 @@
 ﻿using AspNetCore.Models;
 using AspNetCore.ViewModels.Account;
+using MailKit.Net.Smtp;
+using MailKit.Security;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using SendGrid;
-using SendGrid.Helpers.Mail;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using MimeKit;
+using MimeKit.Text;
+using System.IO;
 using System.Threading.Tasks;
 using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 
@@ -16,13 +17,16 @@ namespace AspNetCore.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
+        private readonly IWebHostEnvironment _env;
 
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
+        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IWebHostEnvironment env)
         {
             _userManager = userManager;
             _signInManager = signInManager;
-
+            _env = env;
         }
+
+        #region Register
         public IActionResult Register()
         {
             return View();
@@ -38,8 +42,7 @@ namespace AspNetCore.Controllers
             {
                 FullName = registerVM.FullName,
                 UserName = registerVM.UserName,
-                Email = registerVM.Email,
-                IsActivated=true
+                Email = registerVM.Email
             };
 
             IdentityResult result = await _userManager.CreateAsync(newUser, registerVM.Password);
@@ -51,19 +54,51 @@ namespace AspNetCore.Controllers
 
                 }
                 return View(registerVM);
-
-
             }
 
 
+            if (string.IsNullOrWhiteSpace(registerVM.Email))
+            {
+                return RedirectToAction("Index", "Error");
+            }
+            AppUser appUser = await _userManager.FindByEmailAsync(registerVM.Email);
+
+            if (appUser == null)
+                return RedirectToAction("Index", "Error");
+
+            var message = new MimeMessage();
+
+            message.From.Add(new MailboxAddress("EduHome", "umidshamdinli853@gmail.com"));
+
+            message.To.Add(new MailboxAddress(appUser.FullName, appUser.Email));
+            message.Subject = "Reset Password";
+
+            string emailbody = string.Empty;
+
+            using (StreamReader streamReader = new StreamReader(Path.Combine(_env.WebRootPath, "Templates", "Confirm.html")))
+            {
+                emailbody = streamReader.ReadToEnd();
+            }
+
             var code = await _userManager.GenerateEmailConfirmationTokenAsync(newUser);
+            var link = Url.Action(nameof(VerifyEmail), "Account", new { userId = newUser.Id, token = code }, Request.Scheme, Request.Host.ToString());
 
-            var link = Url.Action(nameof(VerifyEmail), "Account", new { userId = newUser, token = code }, Request.Scheme, Request.Host.ToString());
-            await SendEmail(newUser.Email, link);
 
-            return RedirectToAction(nameof(EmailVerification));
+            emailbody = emailbody.Replace("{{fullname}}", $"{appUser.FullName}").Replace("{{code}}", $"{link}");
+
+            message.Body = new TextPart(TextFormat.Html) { Text = emailbody };
+
+            using var smtp = new SmtpClient();
+
+            smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
+            smtp.Authenticate("umidshamdinli853@gmail.com", "Umidshamdinli123");
+            smtp.Send(message);
+            smtp.Disconnect(true);
+
+
+            return RedirectToAction("Index", "Home");
         }
-
+        #endregion
         public async Task<IActionResult> VerifyEmail(string userId, string token)
         {
             if (userId == null || token == null) return BadRequest();
@@ -79,43 +114,30 @@ namespace AspNetCore.Controllers
 
             return RedirectToAction("Index", "Home");
         }
-        public IActionResult EmailVerification()
-        {
-            return View();
-        }
-        public async Task SendEmail(string emailAddress, string url)
-        {
-            var apiKey = "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";
-            var client = new SendGridClient(apiKey);
-            var from = new EmailAddress("umidash@code.edu.az", "Umid");
-            var subject = "Sending with SendGrid is Fun";
-            var to = new EmailAddress(emailAddress, "Example User");
-            var plainTextContent = "and easy to do anywhere, even with C#";
-            var htmlContent = $"<a href ={Url}>Click here</a>";
-            var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
-            var response = await client.SendEmailAsync(msg);
-        }
 
+
+        #region Logout
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
-           
-        }
 
+        }
+        #endregion
+
+        #region Login
         public IActionResult Login()
         {
             return View();
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginVM loginVM)
         {
             if (!ModelState.IsValid) return View(loginVM);
-            AppUser user = await _userManager.FindByEmailAsync(loginVM.UserNameOrEmail);
 
-            if (user == null)
+            AppUser user = await _userManager.FindByEmailAsync(loginVM.UserNameOrEmail);
+            if (user is null)
             {
                 user = await _userManager.FindByNameAsync(loginVM.UserNameOrEmail);
 
@@ -123,25 +145,32 @@ namespace AspNetCore.Controllers
 
             if (user is null)
             {
-                ModelState.AddModelError("", "Email or Password is wrong");
-                return View();
+                ModelState.AddModelError("", "Email or Password is Wrong");
+                return View(loginVM);
             }
 
             if (!user.IsActivated)
             {
-                ModelState.AddModelError("", "Please Connect with admin");
+                ModelState.AddModelError("", "Contact with Admin");
                 return View(loginVM);
             }
 
             SignInResult signInResult = await _signInManager.PasswordSignInAsync(user, loginVM.Password, false, false);
+
             if (!signInResult.Succeeded)
             {
-                
-                ModelState.AddModelError("", "Email or Password is wrong");
+                if (signInResult.IsNotAllowed)
+                {
+                    ModelState.AddModelError("", "Please Confirm Your Accaunt");
+                    return View(loginVM);
+                }
+                ModelState.AddModelError("", "Email or Password is Wrong");
                 return View(loginVM);
             }
+
             return RedirectToAction("Index", "Home");
         }
+        #endregion
 
 
 

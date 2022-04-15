@@ -11,7 +11,5 @@ namespace AspNetCore.ViewModels
         public About About { get; set; }
 
         public List<Teacher> Teachers { get; set; }
-
-
     }
 }

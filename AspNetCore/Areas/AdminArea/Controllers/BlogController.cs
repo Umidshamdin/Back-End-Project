@@ -56,7 +56,7 @@ namespace AspNetCore.Areas.AdminArea.Controllers
                 ModelState.AddModelError("Photo", "Image type is wrong");
                 return View();
             }
-            if (!blog.Photo.CheckFileSize(200))
+            if (!blog.Photo.CheckFileSize(2000))
             {
                 ModelState.AddModelError("Photo", "Image size is wrong");
                 return View();
@@ -159,6 +159,8 @@ namespace AspNetCore.Areas.AdminArea.Controllers
 
             dbblog.Image = fileName;
             dbblog.Time = blog.Time;
+            dbblog.BlogName = blog.BlogName;
+            dbblog.Author = blog.Author;
             dbblog.Description = blog.Description;
             
 

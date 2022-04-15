@@ -37,6 +37,10 @@ namespace AspNetCore.Data
 
         public DbSet<Teacher> Teachers { get; set; }
 
+        
+
+
+
 
 
 

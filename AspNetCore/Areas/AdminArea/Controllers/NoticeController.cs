@@ -1,4 +1,5 @@
-﻿using AspNetCore.Data;
+﻿using System;
+using AspNetCore.Data;
 using AspNetCore.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -52,6 +53,8 @@ namespace AspNetCore.Areas.AdminArea.Controllers
                 ModelState.AddModelError("Name", "bu artiq movcuddur");
                 return View();
             }
+
+            notice.Time = DateTime.Now.ToLongDateString();
             await _context.Notices.AddAsync(notice);
             await _context.SaveChangesAsync();
 
