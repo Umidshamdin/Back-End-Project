@@ -33,6 +33,11 @@ namespace AspNetCore.Areas.AdminArea.Controllers
             return View(teachers);
         }
 
+        public IActionResult Detail(int Id)
+        {
+            var teacher = _context.Teachers.FirstOrDefault(m => m.Id == Id);
+            return View(teacher);
+        }
         public IActionResult Create()
         {
             return View();

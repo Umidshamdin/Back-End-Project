@@ -161,7 +161,11 @@ namespace AspNetCore.Areas.AdminArea.Controllers
             }
             dbcourse.Image = fileName;
             dbcourse.Name = course.Name;
+            dbcourse.About = course.About;
+            dbcourse.Apply = course.Apply;
+            dbcourse.Certification = course.Certification;
             dbcourse.Description = course.Description;
+            
 
             await _context.SaveChangesAsync();
 

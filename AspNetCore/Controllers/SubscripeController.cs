@@ -56,7 +56,7 @@ namespace AspNetCore.Controllers
 
             string emailbody = string.Empty;
 
-            using (StreamReader streamReader = new StreamReader(Path.Combine(_env.WebRootPath, "Templates", "Subscribe.html")))
+            using (StreamReader streamReader = new StreamReader(Path.Combine(_env.WebRootPath, "Templates", "Subscripe.html")))
             {
                 emailbody = streamReader.ReadToEnd();
             }

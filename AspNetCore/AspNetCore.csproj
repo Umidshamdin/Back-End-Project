@@ -22,8 +22,4 @@
     <PackageReference Include="SendGrid" Version="9.27.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ViewComponents\" />
-  </ItemGroup>
-
 </Project>

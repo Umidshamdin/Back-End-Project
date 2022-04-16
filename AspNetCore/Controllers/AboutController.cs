@@ -23,11 +23,19 @@ namespace AspNetCore.Controllers
         {
             About about = await _context.Abouts.FirstOrDefaultAsync();
             List<Teacher> teachers = await _context.Teachers.Take(5).Skip(1).ToListAsync();
+            List<Testimonial> testimonials = await _context.Testimonials.ToListAsync();
+            List<Notice> notices = await _context.Notices.ToListAsync();
+            Subscripe subscripe = await _context.Subscripes.FirstOrDefaultAsync();
+
+
 
             AboutVM aboutVM = new AboutVM
             {
                 About=about,
-                Teachers=teachers
+                Teachers=teachers,
+                Testimonials=testimonials,
+                Notices=notices,
+                Subscripe=subscripe
             };
 
             return View(aboutVM);

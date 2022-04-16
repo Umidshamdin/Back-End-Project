@@ -39,6 +39,9 @@ namespace AspNetCore.Data
 
         public DbSet<Subscripe> Subscripes { get; set; }
 
+        public DbSet<Comment> Comments { get; set; }
+
+
 
 
 
