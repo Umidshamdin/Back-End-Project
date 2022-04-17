@@ -16,14 +16,3 @@ namespace AspNetCore.ViewComponents
     }
 }
 
-//private readonly AppDbContext _context;
-//public NoticeViewComponent(AppDbContext context)
-//{
-//    _context = context;
-//}
-//public async Task<IViewComponentResult> InvokeAsync()
-//{
-//    List<Notice> notices = await _context.Notices.ToListAsync();
-//    return (await Task.FromResult(View(notices)));
-//}
-//    }

@@ -209,3 +209,4 @@ C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3
 C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Header\Default.cshtml.g.cs
 C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Teacher\Detail.cshtml.g.cs
 C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\Contact\Index.cshtml.g.cs
+C:\Users\Umid\Desktop\BackEnd-Lahiye\AspNetCore\AspNetCore\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\User\Index.cshtml.g.cs

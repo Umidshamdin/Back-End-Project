@@ -7,8 +7,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MimeKit;
 using MimeKit.Text;
+using System;
 using System.IO;
 using System.Threading.Tasks;
+using static AspNetCore.Utilities.Helpers.Helper;
 using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 
 namespace AspNetCore.Controllers
@@ -18,12 +20,14 @@ namespace AspNetCore.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly IWebHostEnvironment _env;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IWebHostEnvironment env)
+        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IWebHostEnvironment env, RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _env = env;
+            _roleManager = roleManager;
         }
 
         #region Register
@@ -79,6 +83,7 @@ namespace AspNetCore.Controllers
             {
                 emailbody = streamReader.ReadToEnd();
             }
+            await _userManager.AddToRoleAsync(newUser, UserRoles.Moderator.ToString());
 
             var code = await _userManager.GenerateEmailConfirmationTokenAsync(newUser);
             var link = Url.Action(nameof(VerifyEmail), "Account", new { userId = newUser.Id, token = code }, Request.Scheme, Request.Host.ToString());
@@ -259,6 +264,17 @@ namespace AspNetCore.Controllers
 
         }
         #endregion
+
+        public async Task CreateRole()
+        {
+            foreach (var role in Enum.GetValues(typeof(UserRoles)))
+            {
+                if (!await _roleManager.RoleExistsAsync(role.ToString()))
+                {
+                    await _roleManager.CreateAsync(new IdentityRole { Name = role.ToString() });
+                }
+            }
+        }
 
 
 

@@ -16,10 +16,7 @@ namespace AspNetCore.Models
         [NotMapped]
         [Required]
         public IFormFile Photo { get; set; }
-
         public string Header { get; set; }
         public string Description { get; set; }
-
-
     }
 }

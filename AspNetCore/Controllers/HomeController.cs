@@ -21,47 +21,30 @@ namespace AspNetCore.Controllers
         public async Task<IActionResult> Index()
         {
             List<Slider> sliders = await _context.Sliders.ToListAsync();
-          
             List<Service> services = await _context.Services.ToListAsync();
             About about = await _context.Abouts.FirstOrDefaultAsync();
-
             List<Course> courses=await _context.Courses.Include(m=>m.Feature).Take(4).Skip(1).ToListAsync();
-            List<Notice> notices = await _context.Notices.ToListAsync();
-        
+            List<Notice> notices = await _context.Notices.ToListAsync();      
             List<CourseFeatures> courseFeatures = await _context.CourseFeatures.ToListAsync();
             List<Testimonial> testimonials = await _context.Testimonials.ToListAsync();
-
             List<Blog> blogs = await _context.Blogs.Take(4).Skip(1).ToListAsync();
-
             List<Event> events = await _context.Events.ToListAsync();
             Subscripe subscripe = await _context.Subscripes.FirstOrDefaultAsync();
 
-
-
             HomeVM homeVM = new HomeVM
             {
-                Sliders=sliders,
-                
+                Sliders=sliders,               
                 Services=services,
                 About=about,
                 Courses=courses,
                 CourseFeatures=courseFeatures,
-                Notices=notices,
-                
+                Notices=notices,               
                 Testimonials=testimonials,
                 Blogs=blogs,
                 Events=events,
-                Subscripe=subscripe
-
-                
+                Subscripe=subscripe             
             };
-
-            
-
             return View(homeVM);
-        }
-
-
-        
+        }       
     }
 }

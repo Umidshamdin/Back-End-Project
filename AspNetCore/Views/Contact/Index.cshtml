@@ -85,23 +85,23 @@
                             <tbody>
                                 @if (Model.Comments != null)
                                 {
-                    @foreach (var comment in Model.Comments)
-                    {
-    <tr>
-        <td> @count </td>
-        <td> @comment.Name </td>
-        <td> @comment.TextMessage </td>
-        <td>
+                            @foreach (var comment in Model.Comments)
+                            {
+                            <tr>
+                                <td> @count </td>
+                                <td> @comment.Name </td>
+                                <td> @comment.TextMessage </td>
+                                <td>
 
-            <form style="display:inline;" asp-action="Delete" asp-route-Id="@comment.Id">
-                <button type="submit" class="btn btn-danger btn-sm"><i class="mdi mdi-delete-forever"></i></button>
-            </form>
-        </td>
-    </tr>count++;
-                    } }
-                                else
-                                {
-                    <h3>SAla,</h3>            }
+                                    <form style="display:inline;" asp-action="Delete" asp-route-Id="@comment.Id">
+                                        <button type="submit" class="btn btn-danger btn-sm"><i class="mdi mdi-delete-forever"></i></button>
+                                    </form>
+                                </td>
+                            </tr>count++;
+                                            } }
+                        else
+                        {
+                            <h3>SAla,</h3>}
 
 
                             </tbody>

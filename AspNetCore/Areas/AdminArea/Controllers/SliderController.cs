@@ -35,7 +35,6 @@ namespace AspNetCore.Areas.AdminArea.Controllers
             var slider = _context.Sliders.FirstOrDefault(m => m.Id == Id);
             return View(slider);
         }
-
         public IActionResult Create()
         {
             return View();
@@ -103,10 +102,7 @@ namespace AspNetCore.Areas.AdminArea.Controllers
             _context.Sliders.Remove(slider);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
-
         }
-
-
         public async Task<IActionResult> Update(int id)
         {
             var slider = await GetSliderById(id);

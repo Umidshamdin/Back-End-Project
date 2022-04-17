@@ -29,5 +29,7 @@ namespace AspNetCore.Models
 
         public CourseFeatures Feature { get; set; }
 
+        public string UserId { get; set; }
+
     }
 }

@@ -19,5 +19,12 @@ namespace AspNetCore.Utilities.Helpers
                 System.IO.File.Delete(path);
             }
         }
+
+        public enum UserRoles
+        {
+            Admin,
+            Moderator,
+            User
+        }
     }
 }

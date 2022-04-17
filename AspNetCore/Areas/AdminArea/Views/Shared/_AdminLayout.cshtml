@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿
+@{ var userName = User.FindFirstValue(ClaimTypes.Name);
+
+    var Role = User.FindFirstValue(ClaimTypes.Role); }
+
+
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -168,12 +175,12 @@
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
                             <img src="~/admin/images/faces/face5.jpg" alt="profile" />
-                            <span class="nav-profile-name">Louis Barnett</span>
+                            <span class="nav-profile-name">@userName</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                             <a class="dropdown-item">
                                 <i class="mdi mdi-settings text-primary"></i>
-                                Settings
+                                @Role
                             </a>
                             <a class="dropdown-item">
                                 <i class="mdi mdi-logout text-primary"></i>
@@ -278,6 +285,13 @@
                             <span class="menu-title">Teacher</span>
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="AdminArea" asp-controller="User" asp-action="Index">
+                            <i class="mdi mdi-chart-pie menu-icon"></i>
+                            <span class="menu-title">User</span>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
                             <i class="mdi mdi-account menu-icon"></i>
@@ -325,6 +339,7 @@
     <script src="~/admin/js/data-table.js"></script>
     <script src="~/admin/js/jquery.dataTables.js"></script>
     <script src="~/admin/js/dataTables.bootstrap4.js"></script>
+    <script src="https://kit.fontawesome.com/5e5d9e530b.js" crossorigin="anonymous"></script>
     <!-- End custom js for this page-->
     @RenderSection("Scripts", false)
 
