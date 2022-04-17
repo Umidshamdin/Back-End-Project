@@ -17,6 +17,7 @@ namespace AspNetCore.Utilities.Pagination
 
         public int CurrentPage { get; set; }
         public int TotalPage { get; set; }
+       
 
         public bool HasPrevious
         {

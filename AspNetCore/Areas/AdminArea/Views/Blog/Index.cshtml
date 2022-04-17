@@ -24,12 +24,16 @@
                         <th>
                             Image
                         </th>
-                      
+
                         <th>
                             Author
                         </th>
                         <th>
                             Time
+                        </th>
+
+                        <th>
+                            BlogName
                         </th>
                         <th>
                             Description
@@ -47,15 +51,18 @@
                             <img src="~/assets/img/blog/@blog.Image" style="width:50px;height:50px" alt="slider" />
                         </td>
 
-                       
+
                         <td>
                             @blog.Author
                         </td>
                         <td>
-                            @blog.Time;
+                            @blog.Time
                         </td>
                         <td>
-                            @blog.Description;
+                            @blog.BlogName
+                        </td>
+                        <td>
+                            @blog.Description.Substring(0, 17) ...
                         </td>
                         <td>
                             <a class="btn btn-primary btn-sm" asp-action="Detail" asp-route-id="@blog.Id">

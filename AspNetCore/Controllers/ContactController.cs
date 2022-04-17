@@ -1,6 +1,8 @@
 ﻿using AspNetCore.Data;
 using AspNetCore.Models;
 using AspNetCore.ViewModels;
+using AspNetCore.ViewModels.Account;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,6 +12,9 @@ using System.Threading.Tasks;
 
 namespace AspNetCore.Controllers
 {
+
+  
+
     public class ContactController : Controller
     {
         private readonly AppDbContext _context;
@@ -34,11 +39,15 @@ namespace AspNetCore.Controllers
         #endregion
 
         #region Create
+
+        
         public IActionResult Create()
         {
             return View();
         }
 
+
+        [Authorize(Roles = "Admin,Moderator,User")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CommentVM commentVM)
@@ -47,6 +56,7 @@ namespace AspNetCore.Controllers
             {
                 return View();
             }
+          
 
 
 
@@ -66,6 +76,8 @@ namespace AspNetCore.Controllers
         #endregion
 
         #region Delete
+        [Authorize(Roles = "Admin,Moderator,User")]
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int Id)

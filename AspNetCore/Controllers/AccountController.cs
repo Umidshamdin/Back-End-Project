@@ -12,7 +12,6 @@ using System.IO;
 using System.Threading.Tasks;
 using static AspNetCore.Utilities.Helpers.Helper;
 using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
-
 namespace AspNetCore.Controllers
 {
     public class AccountController : Controller
