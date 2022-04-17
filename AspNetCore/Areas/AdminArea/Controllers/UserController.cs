@@ -1,6 +1,7 @@
 ﻿using AspNetCore.Data;
 using AspNetCore.Models;
 using AspNetCore.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -11,6 +12,8 @@ using System.Threading.Tasks;
 namespace AspNetCore.Areas.AdminArea.Controllers
 {
     [Area("AdminArea")]
+    [Authorize(Roles = "Admin")]
+
     public class UserController : Controller
     {
 

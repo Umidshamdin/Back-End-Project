@@ -54,16 +54,16 @@
                             @events.Time
                         </td>
                         <td>
-                            @events.Header;
+                            @events.Header
                         </td>
                         <td>
-                            @events.DayTime;
+                            @events.DayTime
                         </td>
                         <td>
-                            @events.Location;
+                            @events.Location
                         </td>
                         <td>
-                            @events.Description;
+                            @events.Description.Substring(0,13) ...
                         </td>
                         <td>
                             <a class="btn btn-primary btn-sm" asp-action="Detail" asp-route-id="@events.Id">

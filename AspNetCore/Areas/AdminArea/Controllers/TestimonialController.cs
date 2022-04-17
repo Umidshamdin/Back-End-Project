@@ -2,6 +2,7 @@
 using AspNetCore.Models;
 using AspNetCore.Utilities.File;
 using AspNetCore.Utilities.Helpers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -15,6 +16,8 @@ using System.Threading.Tasks;
 namespace AspNetCore.Areas.AdminArea.Controllers
 {
     [Area("AdminArea")]
+    [Authorize(Roles = "Admin")]
+
     public class TestimonialController : Controller
     {
         private readonly AppDbContext _context;

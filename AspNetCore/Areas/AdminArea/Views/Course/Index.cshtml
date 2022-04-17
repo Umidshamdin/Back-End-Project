@@ -29,6 +29,9 @@
                             Name
                         </th>
                         <th>
+                            Description
+                        </th>
+                        <th>
                             About
                         </th>
                         <th>
@@ -37,11 +40,11 @@
                         <th>
                             Cerfication
                         </th>
+
                       
-                        <th>
-                            Description
-                        </th>
-                      
+
+
+
                     </tr>
                 </thead>
                 <tbody>
@@ -58,17 +61,20 @@
                             @course.Name
                         </td>
                         <td>
-                            @course.About
+                            @course.Description.Substring(0,13) ...
                         </td>
                         <td>
-                            @course.Apply
+                            @course.About.Substring(0, 13) ...
                         </td>
                         <td>
-                            @course.Certification
+                            @course.Apply.Substring(0, 13) ...
                         </td>
                         <td>
-                            @course.Description
+                            @course.Certification.Substring(0, 13) ...
                         </td>
+
+                        
+
 
 
 

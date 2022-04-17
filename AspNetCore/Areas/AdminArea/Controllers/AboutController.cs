@@ -2,6 +2,7 @@
 using AspNetCore.Models;
 using AspNetCore.Utilities.File;
 using AspNetCore.Utilities.Helpers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -15,12 +16,12 @@ using System.Threading.Tasks;
 namespace AspNetCore.Areas.AdminArea.Controllers
 {
     [Area("AdminArea")]
+    [Authorize(Roles = "Admin")]
+
     public class AboutController : Controller
     {
         private readonly AppDbContext _context;
         public readonly IWebHostEnvironment _env;
-
-
         public AboutController(AppDbContext context, IWebHostEnvironment env)
         {
             _context = context;
@@ -33,7 +34,6 @@ namespace AspNetCore.Areas.AdminArea.Controllers
             if (about == null) return NotFound();
             return View(about);
         }
-
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -58,12 +58,9 @@ namespace AspNetCore.Areas.AdminArea.Controllers
                 return View(dbabout);
             }
 
-
             string path = Helper.GetFilePath(_env.WebRootPath, "assets/img/about", dbabout.Image);
 
             Helper.DeleteFile(path);
-
-
 
             string fileName = Guid.NewGuid().ToString() + "_" + about.Photo.FileName;
 
@@ -79,16 +76,9 @@ namespace AspNetCore.Areas.AdminArea.Controllers
             dbabout.Header = about.Header;
             dbabout.Description = about.Description;
          
-
-
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Update));
 
-
-
-        }
-
-        
-
+        }     
     }
 }

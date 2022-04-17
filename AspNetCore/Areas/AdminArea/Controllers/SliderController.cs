@@ -12,10 +12,13 @@ using System.Security.Policy;
 using System.Threading.Tasks;
 using AspNetCore.Utilities.File;
 using AspNetCore.Utilities.Helpers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AspNetCore.Areas.AdminArea.Controllers
 {
     [Area("AdminArea")]
+    [Authorize(Roles = "Admin")]
+
     public class SliderController : Controller
     {
         private readonly AppDbContext _context;

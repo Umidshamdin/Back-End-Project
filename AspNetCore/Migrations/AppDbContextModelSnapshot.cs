@@ -227,11 +227,14 @@ namespace AspNetCore.Migrations
                     b.Property<string>("Level")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Prise")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("StudentCount")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Time")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("Time")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

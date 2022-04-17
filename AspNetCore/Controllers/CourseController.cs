@@ -20,7 +20,7 @@ namespace AspNetCore.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            List<Course> courses = await _context.Courses.Take(10).Skip(1).ToListAsync();
+            List<Course> courses = await _context.Courses.Skip(1).Take(10).ToListAsync();
         
             return View(courses);
         }

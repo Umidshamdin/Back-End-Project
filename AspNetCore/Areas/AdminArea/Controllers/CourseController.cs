@@ -2,6 +2,7 @@
 using AspNetCore.Models;
 using AspNetCore.Utilities.File;
 using AspNetCore.Utilities.Helpers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -15,6 +16,7 @@ using System.Threading.Tasks;
 namespace AspNetCore.Areas.AdminArea.Controllers
 {
     [Area("AdminArea")]
+    [Authorize(Roles ="Admin,Moderator")]
     public class CourseController : Controller
     {
         private readonly AppDbContext _context;
@@ -80,6 +82,7 @@ namespace AspNetCore.Areas.AdminArea.Controllers
                 return View();
             }
 
+            course.Feature.Time = DateTime.Now.ToLongDateString();
 
             await _context.Courses.AddAsync(course);
             await _context.SaveChangesAsync();
@@ -105,7 +108,7 @@ namespace AspNetCore.Areas.AdminArea.Controllers
         }
         private async Task<Course> GetCourseId(int id)
         {
-            return await _context.Courses.FindAsync(id);
+            return await _context.Courses.Where(m=> m.Id==id).Include(m=>m.Feature).FirstOrDefaultAsync();
         }
         public async Task<IActionResult> Update(int id)
         {
@@ -165,7 +168,10 @@ namespace AspNetCore.Areas.AdminArea.Controllers
             dbcourse.Apply = course.Apply;
             dbcourse.Certification = course.Certification;
             dbcourse.Description = course.Description;
-            
+            dbcourse.Feature.Prise = course.Feature.Prise;
+           
+
+
 
             await _context.SaveChangesAsync();
 

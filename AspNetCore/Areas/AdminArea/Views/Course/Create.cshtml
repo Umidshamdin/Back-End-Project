@@ -16,6 +16,12 @@
             <input class="form-control" style="width:300px" asp-for="Name">
             <span class="text-danger" asp-validation-for="Name"></span>
         </div>
+
+        <div class="form-group">
+            <label asp-for="Description"></label>
+            <input class="form-control" style="width:300px" asp-for="Description">
+            <span class="text-danger" asp-validation-for="Description"></span>
+        </div>
         <div class="form-group">
             <label asp-for="About"></label>
             <input class="form-control" style="width:300px" asp-for="About">
@@ -62,18 +68,15 @@
             <input class="form-control" style="width:300px" asp-for="Feature.Language">
             <span class="text-danger" asp-validation-for="Feature.Language"></span>
         </div>
-      
-
-
-        <div class="form-group">
-            <label asp-for="Description"></label>
-            <input class="form-control" style="width:300px" asp-for="Description">
-            <span class="text-danger" asp-validation-for="Description"></span>
-        </div>
         <div class="form-group">
             <label asp-for="Feature.Assesments"></label>
             <input class="form-control" style="width:300px" asp-for="Feature.Assesments">
             <span class="text-danger" asp-validation-for="Feature.Assesments"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Feature.Prise"></label>
+            <input class="form-control" style="width:300px" asp-for="Feature.Prise">
+            <span class="text-danger" asp-validation-for="Feature.Prise"></span>
         </div>
 
         <button type="submit" class="btn btn-primary me-2">Submit</button>

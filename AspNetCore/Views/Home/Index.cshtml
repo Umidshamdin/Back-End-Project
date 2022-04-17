@@ -100,7 +100,7 @@
                         <div class="course-content">
                             <h3><a href="course-details.html">@item.Name</a></h3>
                             <p>@item.Description</p>
-                            <a asp-controller="Course" asp-action="Detail" asp-route-Id="@item.Id">read more</a>
+                            <a class="default-btn" asp-controller="Course" asp-action="Detail" asp-route-Id="@item.Id">read more</a>
                         </div>
                     </div>
                 </div>
@@ -250,10 +250,11 @@
                         </div>
                         <div class="blog-content">
                             <div class="blog-top">
-                                <h2><a href="blog-details.html">@item.BlogName </a></h2>
+                               
                                 <p>@item.Author/@item.Time <i class="fa fa-comments-o"></i> 4</p>
                             </div>
                             <div class="blog-bottom">
+                                <h2>@item.Description</h2>
 
                                 <a asp-controller="Blog" asp-action="Detail" asp-route-Id="@item.Id">read more</a>
                             </div>

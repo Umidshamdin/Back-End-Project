@@ -94,7 +94,7 @@
                                 <td>
 
                                     <form style="display:inline;" asp-action="Delete" asp-route-Id="@comment.Id">
-                                        <button type="submit" class="btn btn-danger btn-sm"><i class="mdi mdi-delete-forever"></i></button>
+                                        <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-backspace"></i></button>
                                     </form>
                                 </td>
                             </tr>count++;
@@ -124,9 +124,7 @@
                                 <span class="text-danger" asp-validation-for="Email"></span>
                             </div>
                             <div class="col-md-12">
-                                <label asp-for="Subject"></label>
-                                <input type="text" class="form-control" style="width:100%" asp-for="Subject" placeholder="Subject">
-                                <span class="text-danger" asp-validation-for="Subject"></span>
+                                
                                 <label asp-for="TextMessage"></label>
                                 <textarea asp-for="TextMessage"></textarea>
                                 <span class="text-danger" asp-validation-for="TextMessage"></span>
@@ -139,5 +137,6 @@
             </div>
         </div>
     </div>
+    <script src="https://kit.fontawesome.com/5e5d9e530b.js" crossorigin="anonymous"></script>
 </div>
 <!-- Contact End -->

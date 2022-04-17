@@ -35,17 +35,21 @@
                         <p>@Model.Description </p>
                         <div class="course-details-left">
                             <div class="single-course-left">
-                                <h3>@Model.About</h3>
-                                <p>I must explain to you how all this a mistaken idea of ncing great explorer of the rut the is lder of human happinescias unde omnis iste natus error sit volptatem accuntium mque laudantium perspiciatis unde omnis iste natuss</p>
+                                <h3>ABOUT COURSE</h3>
+                                <p>@Model.About</p>
                             </div>
                             <div class="single-course-left">
-                                <h3>@Model.Apply</h3>
-                                <p>I must explain to you how all this a mistaken idea of ncing great explorer of the rut the is lder of human happinescias unde omnis iste natus error sit volptatem accuntium mque laudantium perspiciatis unde omnis iste natuss</p>
+                                <h3>
+                                    HOW TO APPLY
+                                </h3>
+                                <p>@Model.Apply</p>
                             </div>
                             <div class="single-course-left">
-                                <h3>@Model.Certification</h3>
-                                <p class="margin">I must explain to you how all this a mistaken idea of ncing great explorer of the rut the is lder of human happinescias unde omnis iste natus error sit volptatem accuntium mque laudantium perspiciatis unde omnis iste natuss</p>
-                                <p>I must explain to you how all this a mistaken idea of ncing great explorer of the rut the is lder of human</p>
+                                <h3>
+                                    CERTIFICATION
+                                </h3>
+                                <p class="margin">@Model.Certification</p>
+                                
                             </div>
                         </div>
                         <div class="course-details-right">
@@ -58,8 +62,10 @@
                                 <li>language <span>@Model.Feature.Language</span></li>
                                 <li>students <span>@Model.Feature.StudentCount</span></li>
                                 <li>assesments <span>@Model.Feature.Assesments</span></li>
+                                
+
                             </ul>
-                            <h3 class="red">course fee $789</h3>
+                            <h3 class="red">course fee @Model.Feature.Prise</h3>
                         </div>
                     </div>
                     <div class="reply-area">
