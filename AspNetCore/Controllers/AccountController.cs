@@ -82,7 +82,7 @@ namespace AspNetCore.Controllers
             {
                 emailbody = streamReader.ReadToEnd();
             }
-            await _userManager.AddToRoleAsync(newUser, UserRoles.Moderator.ToString());
+            await _userManager.AddToRoleAsync(newUser, UserRoles.User.ToString());
 
             var code = await _userManager.GenerateEmailConfirmationTokenAsync(newUser);
             var link = Url.Action(nameof(VerifyEmail), "Account", new { userId = newUser.Id, token = code }, Request.Scheme, Request.Host.ToString());
